@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --gray: #818181;
+  --black: #161819;
+  --light-gray: #FFFFFF99;
+  --white: #ffffff;
+  --red: #C82929;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.hero-main {
+  position: relative;
+}
+
+.hero-under {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.hero-main:before,
+.hero-main:after,
+.hero-under:before,
+.hero-under:after {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  content: '';
+  border-color: var(--white);
+  border-style: solid;
+}
+
+.hero-main:before {
+  left: 0px;
+  top: 0px;
+  border-width: 1px 0 0 1px;
+}
+
+.hero-main:after {
+  right: 0px;
+  top: 0px;
+  border-width: 1px 1px 0 0;
+}
+
+.hero-under:before {
+  right: 0px;
+  bottom: 0px;
+  border-width: 0 1px 1px 0;
+}
+
+.hero-under:after {
+  left: 0px;
+  bottom: 0px;
+  border-width: 0 0 1px 1px;
+}
+
+.small-hero-main {
+  position: relative;
+}
+
+.small-hero-under {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.small-hero-main:before,
+.small-hero-main:after,
+.small-hero-under:before,
+.small-hero-under:after {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  content: '';
+  border-color: var(--white);
+  border-style: solid;
+}
+
+.small-hero-main:before {
+  left: 0px;
+  top: 0px;
+  border-width: 1px 0 0 1px;
+}
+
+.small-hero-main:after {
+  right: 0px;
+  top: 0px;
+  border-width: 1px 1px 0 0;
+}
+
+.small-hero-under:before {
+  right: 0px;
+  bottom: 0px;
+  border-width: 0 1px 1px 0;
+}
+
+.small-hero-under:after {
+  left: 0px;
+  bottom: 0px;
+  border-width: 0 0 1px 1px;
+}
+
+.contact-main {
+  position: relative;
+}
+
+.contact-under {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.contact-main:before,
+.contact-main:after,
+.contact-under:before,
+.contact-under:after {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  content: '';
+  border-color: var(--gray);
+  border-style: solid;
+}
+
+.contact-main:before {
+  left: 0px;
+  top: 0px;
+  border-width: 1px 0 0 0px;
+}
+
+.contact-main:after {
+  right: 0px;
+  top: 0px;
+  border-width: 1px 0px 0 0;
+}
+
+.contact-under:before {
+  right: 0px;
+  bottom: 0px;
+  border-width: 0 0px 1px 0;
+}
+
+.contact-under:after {
+  left: 0px;
+  bottom: 0px;
+  border-width: 0 0 1px 0px;
+}
+
+.overflow-auto::-webkit-scrollbar, .styled-overflow::-webkit-scrollbar {
+  height: 3px;
+  width: 10px;
+  background-color: #000;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb, .styled-overflow::-webkit-scrollbar-thumb {
+  background: var(--gray);
+}
