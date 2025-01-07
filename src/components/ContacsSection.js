@@ -2,8 +2,8 @@ export default function ContactSection({scrollUp, setPage}) {
     return (
         <>
             <div className="w-350 mx-auto pb-2.5 lg:w-tablet xl:w-notepad 2xl:w-desktop">
-                <div class="contact-main mb-2.5 py-5 px-2.5 mt-11 mb-2.5 2xl:mt-20">
-                    <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:grid-flow-col lg:mb-20">
+                <div class="contact-main mb-2.5 py-5 px-2.5 mt-11 mb-2.5 2xl:mt-20 lg:py-10">
+                    <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:grid-flow-col lg:mb-20 lg:pl-14 lg:pr-4">
                         <div>
                             <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter text-center mb-5 lg:text-2xl lg:text-left lg:font-medium">Контактная информация</h2>
 
@@ -19,7 +19,7 @@ export default function ContactSection({scrollUp, setPage}) {
                             <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" onClick={() => {setPage('cooperating')}}>Партнерам</p>
                         </div>
 
-                        <p className="hidden lg:text-gray lg:text-number lg:block lg:uppercase xl:text-big-para 2xl:text-big-para-2xl">The target has been found</p>
+                        <p className="hidden lg:text-gray lg:text-number lg:block lg:uppercase xl:text-big-para 2xl:text-big-para-2xl lg:w-max">The target has been found</p>
 
                         <div>
                             <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter mb-2.5 lg:text-p-lg lg:mb-5 xl:text-number-lg xl:mb-7 2xl:leading-tight 2xl:mb-12">Связаться с нами</h2>
@@ -44,6 +44,7 @@ export default function ContactSection({scrollUp, setPage}) {
                         <img src="logo.png" className="w-28 mx-auto lg:-mt-14"></img>
                     </div>
 
+                    <div class="contact-center"></div>
                     <div class="contact-under"></div>
                 </div>
             </div>

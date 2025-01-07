@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --gray: #818181;
   --black: #161819;
-  --light-gray: #FFFFFF99;
+  --light-gray: #ffffff99;
   --white: #ffffff;
-  --red: #C82929;
+  --red: #c82929;
 }
 
 * {
@@ -33,7 +32,7 @@
   position: absolute;
   width: 45px;
   height: 45px;
-  content: '';
+  content: "";
   border-color: var(--white);
   border-style: solid;
 }
@@ -80,7 +79,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  content: '';
+  content: "";
   border-color: var(--white);
   border-style: solid;
 }
@@ -120,6 +119,14 @@
   bottom: 0px;
 }
 
+.contact-center {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: calc(50% - 45px);
+  width: 100%;
+}
+
 .contact-main:before,
 .contact-main:after,
 .contact-under:before,
@@ -127,9 +134,55 @@
   position: absolute;
   width: 45px;
   height: 45px;
-  content: '';
+  content: "";
   border-color: var(--gray);
   border-style: solid;
+}
+
+.contact-center:before,
+.contact-center:after {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  content: "";
+  border-color: var(--gray);
+  border-style: solid;
+}
+
+@media (min-width: 1024px) {
+  .contact-main:before,
+  .contact-main:after,
+  .contact-under:before,
+  .contact-under:after,
+  .contact-center:before,
+  .contact-center:after {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 1512px) {
+  .contact-main:before,
+  .contact-main:after,
+  .contact-under:before,
+  .contact-under:after,
+  .contact-center:before,
+  .contact-center:after {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.contact-center:before {
+  left: 0px;
+  top: 0px;
+  border-width: 0px 0px 0 1px;
+}
+
+.contact-center:after {
+  right: 0px;
+  top: 0px;
+  border-width: 0px 1px 0px 0px;
 }
 
 .contact-main:before {
@@ -156,12 +209,14 @@
   border-width: 0 0 1px 0px;
 }
 
-.overflow-auto::-webkit-scrollbar, .styled-overflow::-webkit-scrollbar {
+.overflow-auto::-webkit-scrollbar,
+.styled-overflow::-webkit-scrollbar {
   height: 3px;
   width: 10px;
   background-color: #000;
 }
 
-.overflow-auto::-webkit-scrollbar-thumb, .styled-overflow::-webkit-scrollbar-thumb {
+.overflow-auto::-webkit-scrollbar-thumb,
+.styled-overflow::-webkit-scrollbar-thumb {
   background: var(--gray);
 }

@@ -1,4 +1,3 @@
-import "../mainPage.css";
 import Header from "./Header";
 import HeroSection from "./HeroSection";
 import AboutUsSection from "./AboutUsSection";
