@@ -1,7 +1,7 @@
 export default function AboutUsMainSection() {
     return (
         <>
-            <div className="w-phone mx-auto lg:w-tablet xl:w-notepad 2xl:w-desktop">
+            <div className="w-phone mx-auto lg:w-tablet xl:w-notepad lg:pb-10 2xl:w-desktop 2xl:pb-14">
                 <h1 className="text-h1 font-bold text-white tracking-tighter text-center mb-5 mt-14 lg:text-h1-lg xl:text-h1-xl 2xl:text-h1-2xl 2xl:mb-24">YEGOURT</h1>
                 <div className="space-y-5 2xl:space-y-0">
                     <p className="text-white font-medium text-p tracking-tighter text-center lg:font-normal lg:text-lg lg:uppercase lg:w-2/3 lg:font-normal lg:mx-auto 2xl:w-1/2">Начал свой творческий путь как граффити-художник в 2008-м году. Граффити стало его способом самовыражения, однако, со временем его увлечение начало перерастать во что-то большее. Он начинает придумывать и создавать иллюстрации со своими персонажами, вдохновленные бэкграундом уличной культуры</p>

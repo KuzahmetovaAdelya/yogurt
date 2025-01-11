@@ -4,7 +4,7 @@ export default function AboutUsSection() {
             <div className="w-phone mx-auto mt-20 lg:w-tablet xl:w-notepad xl:mt-28 2xl:w-desktop">
                 <div class="hero-main p-2.5 lg:relative lg:px-12 lg:py-8 lg:pb-0 xl:pb-8 xl:pr-20">
                     <p className="text-gray font-medium text-p mb-1.5 tracking-tighter text-center lg:text-base lg:text-left lg:mb-10 xl:text-right xl:text-lg">01010110101001100111001110010101010100001101</p>
-                    <p className="hidden lg:block lg:text-p-lg lg:text-white lg:mb-10 xl:text-number-lg xl:-mt-20">ЧЁ ЗА ЙОГУРТ?</p>
+                    <p className="hidden lg:block lg:text-p-lg lg:text-white lg:mb-10 xl:text-number-lg xl:-mt-20 font-semibold">ЧЁ ЗА ЙОГУРТ?</p>
                     <div className="w-full bg-gray mb-2.5 lg:w-400 lg:flex lg:justify-center lg:h-270 xl:w-550 xl:h-400">
                         <img src="cap1.png" className="w-270 lg:w-72 xl:w-400"></img>
                     </div>
