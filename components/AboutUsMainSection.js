@@ -10,10 +10,10 @@ export default function AboutUsMainSection() {
 
                 
                 <div className="flex items-center justify-evenly mt-1/2 lg:justify-center lg:gap-7 xl:mt-10% 2xl:mt-20% *:cursor-pointer">
-                    <a href="" className="group"><img src="insta.svg" className="w-10 lg:w-12 lg:h-12 group-hover:opacity-40"></img></a>
-                    <a href="" className="group"><img src="telega.svg" className="w-10 lg:w-12 lg:h-12 group-hover:opacity-40"></img></a>
-                    <a href="" className="group"><img src="vk.svg" className="w-10 lg:w-12 lg:h-12 group-hover:opacity-40"></img></a>
-                    <a href="" className="group"><img src="utube.svg" className="w-10 lg:w-12 group-hover:opacity-40"></img></a>
+                    <a href="" className="group"><img src="/insta.svg" className="w-10 lg:w-12 lg:h-12 group-hover:opacity-40"></img></a>
+                    <a href="" className="group"><img src="/telega.svg" className="w-10 lg:w-12 lg:h-12 group-hover:opacity-40"></img></a>
+                    <a href="" className="group"><img src="/vk.svg" className="w-10 lg:w-12 lg:h-12 group-hover:opacity-40"></img></a>
+                    <a href="" className="group"><img src="/utube.svg" className="w-10 lg:w-12 group-hover:opacity-40"></img></a>
                 </div>
 
                 <p className="hidden lg:block lg:text-lg lg:uppercase lg:font-normal lg:text-gray lg:-mt-9 2xl:text-2xl">yegourt 2024</p>

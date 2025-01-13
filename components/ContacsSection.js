@@ -1,4 +1,4 @@
-export default function ContactSection({scrollUp, setPage}) {
+export default function ContactSection({scrollUp}) {
     return (
         <>
             <div className="w-350 mx-auto pb-2.5 lg:w-tablet xl:w-notepad 2xl:w-desktop">
@@ -15,8 +15,8 @@ export default function ContactSection({scrollUp, setPage}) {
                         </div>
 
                         <div className="flex gap-2.5 flex-col mb-8 lg:justify-end">
-                            <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" onClick={() => {setPage('about')}}>О компании</p>
-                            <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" onClick={() => {setPage('cooperating')}}>Партнерам</p>
+                            <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" href="/aboutUs">О компании</a>
+                            <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" href='/cooperation'>Партнерам</a>
                         </div>
 
                         <p className="hidden lg:text-gray lg:text-number lg:block lg:uppercase xl:text-big-para 2xl:text-big-para-2xl lg:w-max">The target has been found</p>
@@ -27,7 +27,7 @@ export default function ContactSection({scrollUp, setPage}) {
 
                             <form className="flex items-center mb-8">
                                 <input className="peer border-3 border-white rounded-input bg-black p-2.5 lg:p-5 text-gray placeholder:text-gray w-72 lg:w-400 mx-auto lg:mx-0 lg:text-xl focus-visible:outline-0 focus-visible:py-1.5 lg:focus-visible:py-4 hover:border-gray 2xl:w-500" placeholder="email@email.ru" type="email"></input>
-                                <button className="border-white border-2 rounded-full p-3 peer-focus-visible:p-2 group hover:bg-white"><img src="arrow.svg" className="w-25 lg:w-10 h-25 lg:h-10 group-hover:invert group-hover:opacity-40"></img></button>
+                                <button className="border-white border-2 rounded-full p-3 peer-focus-visible:p-2 group hover:bg-white"><img src="/arrow.svg" className="w-25 lg:w-10 h-25 lg:h-10 group-hover:invert group-hover:opacity-40"></img></button>
                             </form>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ export default function ContactSection({scrollUp, setPage}) {
                             <h4 className="text-gray text-p font-medium tracking-tighter uppercase leading-5 uppercase lg:text-2xl lg:leading-tight lg:font-normal hover:text-white cursor-pointer" onClick={scrollUp}>Вверх</h4>
                         </div>
 
-                        <img src="logo.png" className="w-28 mx-auto lg:-mt-14"></img>
+                        <img src="/logo.png" className="w-28 mx-auto lg:-mt-14"></img>
                     </div>
 
                     <div class="contact-center"></div>

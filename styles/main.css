@@ -142,7 +142,7 @@
 .contact-center:before,
 .contact-center:after {
   position: absolute;
-  width: 100px;
+  width: 1px;
   height: 100px;
   content: "";
   border-color: var(--gray);
@@ -156,7 +156,7 @@
   .contact-under:after,
   .contact-center:before,
   .contact-center:after {
-    width: 100px;
+    width: 1px;
     height: 100px;
   }
 }
@@ -168,7 +168,7 @@
   .contact-under:after,
   .contact-center:before,
   .contact-center:after {
-    width: 150px;
+    width: 1px;
     height: 150px;
   }
 }

@@ -6,7 +6,7 @@ export default function BasketCard() {
                     <div className="2xl:relative">
                         <div class="hero-main w-40 h-44 mb-5 lg:w-full lg:h-80">
                             <div className="bg-gray flex justify-center items-center h-44 w-full lg:h-80">
-                                <img src="ipods2.png" className=""></img>
+                                <img src="/ipods2.png" className=""></img>
                             </div>
                             <div class="hero-under"></div>
                         </div>
@@ -30,7 +30,7 @@ export default function BasketCard() {
                         <p className="text-white text-number font-bold tracking-tighter lg:text-big-para">2225 Р</p>
                         <p className="text-white text-p font-medium tracking-tighter opacity-80 h-11 text-ellipsis overflow-hidden w-44 mb-5 lg:w-full lg:h-max">Who doesn’t enjoy reading inspiring short love stories from all over the world?  Who doesn’t enjoy reading inspiring short love stories from all over the world?</p>
                         <div className="p-1.5 border-white border-2 rounded-basket w-max group hover:bg-white cursor-pointer">
-                            <img src="delete.svg" className="group-hover:invert group-hover:opacity-40 xl:w-43 xl:h-43"></img>
+                            <img src="/delete.svg" className="group-hover:invert group-hover:opacity-40 xl:w-43 xl:h-43"></img>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-export default function HeroSection({setPage}) {
+export default function HeroSection({}) {
     return (
         <>
             <div className="w-phone mx-auto lg:w-tablet xl:w-notepad 2xl:w-desktop">
@@ -13,9 +13,9 @@ export default function HeroSection({setPage}) {
                             <p className="text-white font-medium text-p w-52 mb-28 tracking-tighter lg:text-lg lg:w-60 lg:mb-0 xl:w-max">Готовы увидеть как инновации меняют стиль?</p>
                         </div>
 
-                        <a className="flex items-center mx-auto pb-12 w-max lg:pb-0 lg:mx-0 cursor-pointer group" onClick={() => {setPage('catalog')}}>
+                        <a className="flex items-center mx-auto pb-12 w-max lg:pb-0 lg:mx-0 cursor-pointer group" href='/catalog'>
                             <p className="text-white font-medium text-button uppercase rounded-button border-white border-2 py-8 px-20 w-min lg:text-2xl lg:px-28 group-hover:bg-white group-hover:text-gray">Каталог</p>
-                            <div className="border-white border-2 rounded-full p-6 group-hover:bg-white"><img src="arrow.svg" className="w-43 h-43 group-hover:invert group-hover:opacity-40"></img></div>
+                            <div className="border-white border-2 rounded-full p-6 group-hover:bg-white"><img src="/arrow.svg" className="w-43 h-43 group-hover:invert group-hover:opacity-40"></img></div>
                         </a>
                     </div>
                     

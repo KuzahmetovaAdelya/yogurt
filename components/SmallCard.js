@@ -1,10 +1,10 @@
-export default function SmallCard({setPage, scrollUp}) {
+export default function SmallCard({}) {
     return (
         <>
             <div>
                 <div class="hero-main mb-5 lg:w-76 lg:h-80 2xl:mb-2.5">
                     <div className="bg-gray h-44 w-full flex justify-center items-center lg:h-full">
-                        <img src="ipods2.png" className="w-32 lg:w-72 lg:h-60 h-28"></img>
+                        <img src="/ipods2.png" className="w-32 lg:w-72 lg:h-60 h-28"></img>
                     </div>
                     <div class="hero-under"></div>
                 </div>
@@ -14,9 +14,9 @@ export default function SmallCard({setPage, scrollUp}) {
                     <p className="font-bold text-white text-2xl tracking-tighter lg:text-big-para 2xl:text-number">2225</p>
                 </div>
 
-                <button className="flex items-center mx-auto lg:w-full lg:mx-0 cursor-pointer group" onClick={() => {setPage('item'); scrollUp()}}>
+                <a className="flex items-center mx-auto lg:w-full lg:mx-0 cursor-pointer group text-center" href='/item'>
                     <p className="text-white font-medium text-sm rounded-button border-white border-2 py-4 px-11 lg:text-2xl lg:w-full group-hover:bg-white group-hover:text-gray">В корзину</p>
-                </button>
+                </a>
             </div>
         </>
     )

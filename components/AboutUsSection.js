@@ -6,7 +6,7 @@ export default function AboutUsSection() {
                     <p className="text-gray font-medium text-p mb-1.5 tracking-tighter text-center lg:text-base lg:text-left lg:mb-10 xl:text-right xl:text-lg">01010110101001100111001110010101010100001101</p>
                     <p className="hidden lg:block lg:text-p-lg lg:text-white lg:mb-10 xl:text-number-lg xl:-mt-20 font-semibold">ЧЁ ЗА ЙОГУРТ?</p>
                     <div className="w-full bg-gray mb-2.5 lg:w-400 lg:flex lg:justify-center lg:h-270 xl:w-550 xl:h-400">
-                        <img src="cap1.png" className="w-270 lg:w-72 xl:w-400"></img>
+                        <img src="/cap1.png" className="w-270 lg:w-72 xl:w-400"></img>
                     </div>
                     <div className="flex items-center justify-between mb-4 lg:flex-col lg:items-start lg:absolute lg:top-8 lg:right-12 xl:top-24 xl:right-300 2xl:top-8 2xl:left-1/2">
                         <p className="text-gray font-medium text-p mb-1.5 tracking-tighter xl:text-lg">Latitude: 85.8891</p>
@@ -26,7 +26,7 @@ export default function AboutUsSection() {
                     
                     <div className="mt-16 lg:float-right lg:w-300 lg:-mt-44 lg:mr-7 xl:-mr-8 xl:-mt-60 xl:w-400">
                         <div className="bg-gray relative h-48 xl:h-52">
-                            <img src="headphone1.png" className="z-10 absolute -top-16 lg:-top-11 xl:-top-20"></img>
+                            <img src="/headphone1.png" className="z-10 absolute -top-16 lg:-top-11 xl:-top-20"></img>
                         </div>
                     </div>
 
