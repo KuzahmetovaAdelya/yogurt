@@ -4,7 +4,7 @@ export default function HeroSection({}) {
             <div className="w-phone mx-auto lg:w-tablet xl:w-notepad 2xl:w-desktop">
                 <div class="hero-main pt-32 xl:pt-10">
                     <div className="w-phone h-350 flex items-center justify-center border rounded-full border-white mb-9 lg:w-737 lg:h-737 lg:mx-auto lg:-mb-7 xl:-mb-14">
-                        <h1 className="text-h1 font-bold text-white tracking-tighter lg:text-h1-lg xl:text-h1-xl 2xl:text-h1-2xl">YEGOURT</h1>
+                        <h1 className="text-h1 font-bold text-white tracking-tighter lg:text-h1-lg xl:text-h1-xl 2xl:text-h1-2xl pointer-events-none">YEGOURT</h1>
                     </div>
 
                     <div className="lg:flex lg:items-end lg:justify-between lg:pb-24 xl:pb-10 xl:px-20">

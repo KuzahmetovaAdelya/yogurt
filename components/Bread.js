@@ -5,7 +5,7 @@ export default function Bread({breadText, breadSecondText}) {
                 {breadSecondText === "" ?
                 <p className="text-gray font-medium lg:font-normal tracking-tighter text-p lg:text-p-lg xl:text-lg 2xl:text-p-lg"><a className="cursor-pointer hover:text-white" href='/'>Главная \ </a><span className="text-white">{breadText}</span></p>
                 :
-                <p className="text-gray font-medium lg:font-normal tracking-tighter text-p lg:text-p-lg xl:text-lg 2xl:text-p-lg"><span className="cursor-pointer hover:text-white" href='/'>Главная \ </span><span className="text-white" href='/item'>{breadText} \ </span><span className="text-white">{breadSecondText}</span></p>
+                <p className="text-gray font-medium lg:font-normal tracking-tighter text-p lg:text-p-lg xl:text-lg 2xl:text-p-lg"><a className="cursor-pointer hover:text-white" href='/'>Главная \ </a><a className="text-gray hover:text-white cursor-pointer" href='/item'>{breadText} \ </a><span className="text-white">{breadSecondText}</span></p>
                 }
             </div>
         </>

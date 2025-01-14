@@ -1,6 +1,12 @@
+import Head from "next/head";
+
 export default function MenuPage({}) {
     return (
         <>
+            <Head>
+                <meta name="description" content="Навигационное меню интернет магазина аксессуаров YEGOURT" />
+                <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, навигация, меню" />
+            </Head>
             <div className="w-phone h-screen mx-auto lg:w-tablet xl:w-notepad 2xl:w-desktop">
                 <div className="h-px"></div>
                 <div class="hero-main mt-20 h-5/6 relative">

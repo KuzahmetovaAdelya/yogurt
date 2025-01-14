@@ -3,6 +3,7 @@ import Bread from "../components/Bread";
 import ItemMainSection from "../components/ItemMainSection";
 import ContactSection from '../components/ContacsSection'
 import { useRef } from "react";
+import Head from "next/head";
 
 export default function ItemPage({}) {
     const refScrollUp = useRef()
@@ -12,6 +13,10 @@ export default function ItemPage({}) {
     }
     return (
         <>
+            <Head>
+                <meta name="description" content="//описание товара//" />
+                <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, " />
+            </Head>
             <div ref={refScrollUp}>
                 <Header />
             </div>

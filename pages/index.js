@@ -6,6 +6,7 @@ import ConceptsSection from "../components/ConceptsSection";
 import CollabSection from "../components/CollabSection";
 import ContactSection from "../components/ContacsSection";
 import { useRef } from "react";
+import Head from "next/head";
 
 export default function MainPage({}) {
     const refScrollUp = useRef()
@@ -16,6 +17,10 @@ export default function MainPage({}) {
 
     return (
         <>  
+            <Head>
+                <meta name="description" content="YEGOURT это бренд одежды и аксессуаров, идущий в ногу со временем, а иногда и опережающий его" />
+                <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин" />
+            </Head>
             <div className="bg-hero-pattern bg-100%" ref={refScrollUp}>
                 <Header />
                 <HeroSection />

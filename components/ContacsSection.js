@@ -8,15 +8,15 @@ export default function ContactSection({scrollUp}) {
                             <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter text-center mb-5 lg:text-2xl lg:text-left lg:font-medium">Контактная информация</h2>
 
                             <div className="flex gap-2.5 flex-col mb-8">
-                                <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray">VK</p>
-                                <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray">Telegram</p>
-                                <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray">Instagram</p>
+                                <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray w-max">VK</p>
+                                <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray w-max">Telegram</p>
+                                <p className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray w-max">Instagram</p>
                             </div>
                         </div>
 
                         <div className="flex gap-2.5 flex-col mb-8 lg:justify-end">
-                            <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" href="/aboutUs">О компании</a>
-                            <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray" href='/cooperation'>Партнерам</a>
+                            <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray w-max" href="/aboutUs">О компании</a>
+                            <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray w-max" href='/cooperation'>Партнерам</a>
                         </div>
 
                         <p className="hidden lg:text-gray lg:text-number lg:block lg:uppercase xl:text-big-para 2xl:text-big-para-2xl lg:w-max">The target has been found</p>
@@ -26,8 +26,8 @@ export default function ContactSection({scrollUp}) {
                             <p className="text-white font-medium text-p tracking-tighter mb-5 lg:text-lg">Укажите ваш e-mail, а мы с вами свяжемся</p>
 
                             <form className="flex items-center mb-8">
-                                <input className="peer border-3 border-white rounded-input bg-black p-2.5 lg:p-5 text-gray placeholder:text-gray w-72 lg:w-400 mx-auto lg:mx-0 lg:text-xl focus-visible:outline-0 focus-visible:py-1.5 lg:focus-visible:py-4 hover:border-gray 2xl:w-500" placeholder="email@email.ru" type="email"></input>
-                                <button className="border-white border-2 rounded-full p-3 peer-focus-visible:p-2 group hover:bg-white"><img src="/arrow.svg" className="w-25 lg:w-10 h-25 lg:h-10 group-hover:invert group-hover:opacity-40"></img></button>
+                                <input className="peer border-3 border-white rounded-input bg-black p-2.5 lg:p-5 text-gray placeholder:text-gray w-72 lg:w-400 mx-auto lg:mx-0 lg:text-xl focus-visible:outline-0 focus-visible:py-1.5 lg:focus-visible:py-4 hover:border-gray 2xl:w-500 caret-gray" placeholder="email@email.ru" type="email"></input>
+                                <button className="border-white border-2 rounded-full p-3 peer-focus-visible:p-2 group hover:bg-white 2xl:p-3.5 2xl:peer-focus-visible:p-2.5"><img src="/arrow.svg" className="w-25 lg:w-10 h-25 lg:h-10 group-hover:invert group-hover:opacity-40"></img></button>
                             </form>
                         </div>
                     </div>
