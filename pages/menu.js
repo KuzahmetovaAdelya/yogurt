@@ -25,9 +25,9 @@ export default function MenuPage({}) {
                     </div>
 
                     <div className="absolute flex items-center justify-evenly inset-0 top-90% h-min *:cursor-pointer lg:justify-center lg:gap-7 lg:top-full *:cursor-pointer">
-                        <a href="" className="group"><img src="/insta.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12"></img></a>
-                        <a href="" className="group"><img src="/telega.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12"></img></a>
-                        <a href="" className="group"><img src="/vk.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12"></img></a>
+                        <a href="" className="group"><img src="/insta.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12 2xl:h-12"></img></a>
+                        <a href="" className="group"><img src="/telega.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12 2xl:h-12"></img></a>
+                        <a href="" className="group"><img src="/vk.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12 2xl:h-12"></img></a>
                         <a href="" className="group"><img src="/utube.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12"></img></a>
                     </div>
                     
