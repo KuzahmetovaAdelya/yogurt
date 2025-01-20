@@ -19,7 +19,7 @@ export default function ContactSection({scrollUp}) {
                             <a className="text-white text-lg font-normal tracking-tighter lg:font-normal lg:text-2xl cursor-pointer hover:text-gray w-max" href='/cooperation'>Партнерам</a>
                         </div>
 
-                        <p className="hidden lg:text-gray lg:text-number lg:block lg:uppercase xl:text-big-para 2xl:text-big-para-2xl lg:w-max">The target has been found</p>
+                        <p className="hidden lg:tracking-tighter lg:text-gray lg:text-number lg:block lg:uppercase xl:tracking-normal xl:text-big-para 2xl:text-big-para-2xl lg:w-max">The target has been found</p>
 
                         <div>
                             <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter mb-2.5 lg:text-p-lg lg:mb-5 xl:text-number-lg xl:mb-7 2xl:leading-tight 2xl:mb-12">Связаться с нами</h2>

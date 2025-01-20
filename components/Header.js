@@ -6,8 +6,8 @@ export default function Header({}) {
                     <a className="cursor-pointer" href='/'><img src="/logo.png" className="w-16 lg:w-24"></img></a>
 
                     <a className="cursor-pointer hover:opacity-70" href='/menu'>
-                        <img src="/menu.svg" className="w-12 xl:hidden"></img>
-                        <p className="hidden text-white lg:font-normal tracking-tighter lg:text-p-lg hidden xl:block xl:font-medium">Меню</p>
+                        <img src="/menu.svg" className="w-12"></img>
+                        {/* <p className="hidden text-white lg:font-normal tracking-tighter lg:text-p-lg hidden xl:block xl:font-medium">Меню</p> */}
                     </a>
                     <a className="text-white lg:font-normal tracking-tighter lg:text-p-lg hidden lg:block cursor-pointer hover:opacity-70" href='basket'>Корзина</a>
                 </header>

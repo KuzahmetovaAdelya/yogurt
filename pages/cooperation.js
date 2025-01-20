@@ -1,9 +1,16 @@
+import { useRef } from "react";
 import Bread from "../components/Bread";
 import CooperMainSection from "../components/CooperMainSection";
 import Header from "../components/Header";
 import Head from "next/head";
 
-export default function CooperPage({}) {
+export default function CooperPage() {
+    const refScrollUp = useRef()
+
+    function handleScrollUp() {
+      refScrollUp.current.scrollIntoView({behavior: "smooth"})
+    }
+
     return (
         <>
             <Head>
@@ -11,9 +18,11 @@ export default function CooperPage({}) {
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, партнеры, сотрудничество, партнерская программа" />
             </Head>
             <div className="min-h-screen">
-                <Header />
+                <div ref={refScrollUp}>
+                    <Header />
+                </div>
                 <Bread breadText={"О Бренде"} breadSecondText={""} />
-                <CooperMainSection />
+                <CooperMainSection scrollUp={handleScrollUp} />
             </div>
             
         </>

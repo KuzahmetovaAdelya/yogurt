@@ -8,7 +8,14 @@ export default function ItemMainSection({}) {
 
                 <div className="lg:flex lg:flex-col-reverse xl:flex-row-reverse xl:justify-between">
                     <div className="lg:mt-5 xl:hidden">
-                        <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter w-52 lg:text-4xl lg:font-medium lg:w-2/5 lg:leading-tight">Headphone Case \ Liquid Web</h2>
+                        <div className="lg:flex lg:justify-between">
+                            <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter w-56 lg:text-4xl lg:font-medium lg:w-2/5 lg:leading-tight">Headphone Case \ Liquid Web</h2>
+                            <div className="hidden lg:flex flex-col gap-5">
+                                <p className="text-white font-medium text-lg tracking-tighter"><span className="opacity-70">Тип: </span><span className="opacity-100">Чехол для наушников</span></p>
+                                <p className="text-white font-medium text-lg tracking-tighter"><span className="opacity-70">Материал: </span><span className="opacity-100">Чехол для наушников</span></p>
+                                <p className="text-white font-medium text-lg tracking-tighter"><span className="opacity-70">Страна: </span><span className="opacity-100">Россия</span></p>
+                            </div>
+                        </div>
                         <div className="mt-2.5 lg:mt-5">
                             <p className="text-gray font-medium text-p tracking-tighter line-through leading-5 lg:text-2xl lg:leading-tight">4000</p>
                             <p className="font-bold text-white text-number tracking-tighter leading-9 lg:text-number-lg lg:leading-tight">4000</p>
@@ -57,8 +64,14 @@ export default function ItemMainSection({}) {
                                 </div>
                             </div>
 
-                            <div className="mb-9 lg:mb-0">
+                            <div className="mb-9 lg:mb-0 xl:mb-5">
                                 <p className="text-white font-medium text-p tracking-tighter w-5/6 lg:text-lg lg:w-80">Who doesn’t enjoy reading inspiring short love stories from all over the world?  Who doesn’t enjoy reading inspiring short love stories from all over the world?</p>
+                            </div>
+
+                            <div className="flex flex-col gap-5">
+                                <p className="text-white font-medium text-lg tracking-tighter"><span className="opacity-70">Тип: </span><span className="opacity-100">Чехол для наушников</span></p>
+                                <p className="text-white font-medium text-lg tracking-tighter"><span className="opacity-70">Материал: </span><span className="opacity-100">Чехол для наушников</span></p>
+                                <p className="text-white font-medium text-lg tracking-tighter"><span className="opacity-70">Страна: </span><span className="opacity-100">Россия</span></p>
                             </div>
                         </div>
 
@@ -72,6 +85,11 @@ export default function ItemMainSection({}) {
                 <div className="lg:flex lg:justify-between lg:items-end lg:mb-5 xl:hidden">
                     <div className="mb-9 lg:mb-0">
                         <p className="text-white font-medium text-p tracking-tighter w-5/6 lg:text-lg lg:w-80">Who doesn’t enjoy reading inspiring short love stories from all over the world?  Who doesn’t enjoy reading inspiring short love stories from all over the world?</p>
+                        <div className="flex flex-col gap-5 mt-5 lg:hidden">
+                            <p className="text-white font-medium text-p tracking-tighter"><span className="opacity-70">Тип: </span><span className="opacity-100">Чехол для наушников</span></p>
+                            <p className="text-white font-medium text-p tracking-tighter"><span className="opacity-70">Материал: </span><span className="opacity-100">Чехол для наушников</span></p>
+                            <p className="text-white font-medium text-p tracking-tighter"><span className="opacity-70">Страна: </span><span className="opacity-100">Россия</span></p>
+                        </div>
                     </div>
 
                     <a className="flex items-center mx-auto w-max mb-5 lg:mb-0 lg:mx-0 group">
