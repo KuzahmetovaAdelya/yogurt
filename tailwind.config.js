@@ -16,7 +16,10 @@ module.exports = {
       colors: {
         'black': '#161819',
         'gray': "#818181",
+        'light-gray': "#D9D9D9",
         'red': '#C82929',
+        'admin-black': '#1A1C1E',
+        'admin-gray': '#252729',
       },
       width: {
         'phone': '350px',
@@ -28,6 +31,7 @@ module.exports = {
         serif: ["Inter", "sans-serif"],
       },
       fontSize: {
+        'admin': '10px',
         'p': '15px',
         'button': '17px',
         'big-para': '28px',
@@ -42,8 +46,8 @@ module.exports = {
         'h1-2xl': '345px',
       },
       spacing: {
-        '19': '19px',
         '15': '15px',
+        '19': '19px',
         '21': '21px',
         '25': '25px',
         '43': '43px',
