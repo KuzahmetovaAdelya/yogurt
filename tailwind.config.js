@@ -14,9 +14,11 @@ module.exports = {
         '100%': '100% 100%',
       },
       colors: {
+        'full-black': '#00000080',
         'black': '#161819',
         'gray': "#818181",
         'light-gray': "#D9D9D9",
+        'blue': '#3990F3',
         'red': '#C82929',
         'admin-black': '#1A1C1E',
         'admin-gray': '#252729',
@@ -29,6 +31,9 @@ module.exports = {
       },
       fontFamily: {
         serif: ["Inter", "sans-serif"],
+      },
+      lineHeight: {
+        '4.5': '18px',
       },
       fontSize: {
         'admin': '10px',
