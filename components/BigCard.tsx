@@ -3,11 +3,11 @@ export default function BigCard({}) {
         <>
             <a className="group" href='/item'>
                 <div className="cursor-pointer">
-                    <div class="hero-main mb-2.5 lg:mb-5">
+                    <div className="hero-main mb-2.5 lg:mb-5">
                         <div className="bg-gray h-80 w-full flex justify-center items-center xl:h-500">
                             <img src="/headphones2.png" className="w-72 h-56 lg:w-400 lg:h-300 xl:w-575 xl:h-500"></img>
                         </div>
-                        <div class="hero-under"></div>
+                        <div className="hero-under"></div>
                     </div>
 
                     <div className="flex justify-between items-center lg:items-start">

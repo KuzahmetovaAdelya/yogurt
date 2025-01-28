@@ -17,6 +17,7 @@ export default function BasketPage({}) {
             <Head>
                 <meta name="description" content="Корзина интернет магазина аксессуаров YEGOURT" />
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, корзина" />
+                <title>Yegourt - Корзина</title>
             </Head>
             <div ref={refScrollUp}>
                 <Header />

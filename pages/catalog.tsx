@@ -17,6 +17,7 @@ export default function CatalogPage({}) {
             <Head>
                 <meta name="description" content="Каталог товаров интернет магазина аксессуаров YEGOURT" />
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, каталог, купить украшение, товар" />
+                <title>Yegourt - Каталог</title>
             </Head>
             <div ref={refScrollUp}>
                 <Header />

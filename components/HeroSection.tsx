@@ -2,7 +2,7 @@ export default function HeroSection({}) {
     return (
         <>
             <div className="w-phone mx-auto lg:w-tablet xl:w-notepad 2xl:w-desktop">
-                <div class="hero-main pt-32 xl:pt-10">
+                <div className="hero-main pt-32 xl:pt-10">
                     <div className="w-phone h-350 flex items-center justify-center border rounded-full border-white mb-9 lg:w-737 lg:h-737 lg:mx-auto lg:-mb-7 xl:-mb-14">
                         <h1 className="text-h1 font-bold text-white tracking-tighter lg:text-h1-lg xl:text-h1-xl 2xl:text-h1-2xl pointer-events-none">YEGOURT</h1>
                     </div>
@@ -19,7 +19,7 @@ export default function HeroSection({}) {
                         </a>
                     </div>
                     
-                    <div class="hero-under"></div>
+                    <div className="hero-under"></div>
                 </div>
                 <div className="h-1"></div>
                 <hr className="w-phone mx-auto border-gray pb-10 mt-10 lg:w-tablet lg:mt-8 xl:w-notepad xl:mt-5 xl:pb-16 2xl:w-desktop"></hr>

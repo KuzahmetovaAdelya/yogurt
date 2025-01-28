@@ -16,6 +16,7 @@ export default function CooperPage() {
             <Head>
                 <meta name="description" content="Мы рады приветствовать вас в партнёрской программе нашего интернет-магазина! Здесь вы найдёте всю необходимую информацию о том, как стать партнёром и начать зарабатывать вместе с нами." />
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, партнеры, сотрудничество, партнерская программа" />
+                <title>Yegourt - Сотрудничество</title>
             </Head>
             <div className="min-h-screen">
                 <div ref={refScrollUp}>

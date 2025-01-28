@@ -1,5 +1,5 @@
-import BigCard from "./BigCard";
 import SmallCard from "./SmallCard";
+import BigCard from "./BigCard";
 
 export default function CatalogSection({}) {
     return (

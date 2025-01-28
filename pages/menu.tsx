@@ -6,10 +6,11 @@ export default function MenuPage({}) {
             <Head>
                 <meta name="description" content="Навигационное меню интернет магазина аксессуаров YEGOURT" />
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, навигация, меню" />
+                <title>Yegourt - Навигационное меню</title>
             </Head>
             <div className="w-phone h-screen mx-auto lg:w-tablet xl:w-notepad 2xl:w-desktop">
                 <div className="h-px"></div>
-                <div class="hero-main mt-20 h-5/6 relative">
+                <div className="hero-main mt-20 h-5/6 relative">
                     <div className="flex justify-center *:cursor-pointer">
                         <a className="absolute w-75 h-75 -top-8 hover:opacity-40 2xl:w-90 2xl:h-90" href='/'>
                             <img src="/close.svg"></img>
@@ -31,7 +32,7 @@ export default function MenuPage({}) {
                         <a href="" className="group"><img src="/utube.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12"></img></a>
                     </div>
                     
-                    <div class="hero-under"></div>
+                    <div className="hero-under"></div>
                 </div>
             </div>
         </>

@@ -20,6 +20,7 @@ export default function MainPage({}) {
             <Head>
                 <meta name="description" content="YEGOURT это бренд одежды и аксессуаров, идущий в ногу со временем, а иногда и опережающий его" />
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин" />
+                <title>Yegourt</title>
             </Head>
             <div className="bg-hero-pattern bg-100%" ref={refScrollUp}>
                 <Header />

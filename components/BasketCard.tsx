@@ -4,11 +4,11 @@ export default function BasketCard() {
             <div>
                 <div className="flex justify-between gap-3.5 mb-5 mt-5 flex-col 2xl:gap-0">
                     <div className="2xl:relative">
-                        <div class="hero-main w-40 h-44 mb-5 lg:w-full lg:h-80">
+                        <div className="hero-main w-40 h-44 mb-5 lg:w-full lg:h-80">
                             <div className="bg-gray flex justify-center items-center h-44 w-full lg:h-80">
                                 <img src="/ipods2.png" className=""></img>
                             </div>
-                            <div class="hero-under"></div>
+                            <div className="hero-under"></div>
                         </div>
 
                         <div className="flex gap-1 *:cursor-pointer 2xl:absolute 2xl:right-0">

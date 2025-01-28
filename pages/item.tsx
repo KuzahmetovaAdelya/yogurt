@@ -16,7 +16,8 @@ export default function ItemPage({}) {
             <Head>
                 <meta name="description" content="//описание товара//" />
                 <meta name="keywords" content="yegourt, магазин аксессуаров, yogurt, 3Д, 3D, 3Д печать, 3D печать, интернет магазин, " />
-            </Head>
+                <title>Yegourt - Товар</title>
+                </Head>
             <div ref={refScrollUp}>
                 <Header />
             </div>

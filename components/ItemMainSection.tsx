@@ -23,33 +23,33 @@ export default function ItemMainSection({}) {
                     </div>
 
                     <div className="mt-4 mb-8 lg:flex lg:flex-row-reverse lg:h-650 lg:justify-end lg:gap-14">
-                        <div class="hero-main mb-2.5 lg:mb-0 lg:w-575 lg:h-650 2xl:w-737">
+                        <div className="hero-main mb-2.5 lg:mb-0 lg:w-575 lg:h-650 2xl:w-737">
                             <div className="bg-black w-full flex justify-center items-center">
                                 <img src="/headphones4.png" className="lg:w-500 lg:h-575 w-300 h-400"></img>
                             </div>
-                            <div class="hero-under"></div>
+                            <div className="hero-under"></div>
                         </div>
 
                         <div className="flex justify-between items-center lg:flex-col">
-                            <div class="small-hero-main w-24 lg:w-44 lg:h-44">
+                            <div className="small-hero-main w-24 lg:w-44 lg:h-44">
                                 <div className="bg-black flex justify-center items-center">
                                     <img src="/headphones4.png" className="w-20 h-24 lg:h-44 lg:w-36"></img>
                                 </div>
-                                <div class="small-hero-under"></div>
+                                <div className="small-hero-under"></div>
                             </div>
 
-                            <div class="small-hero-main w-24 lg:w-44 lg:h-44">
+                            <div className="small-hero-main w-24 lg:w-44 lg:h-44">
                                 <div className="bg-black flex justify-center items-center">
                                     <img src="/headphones4.png" className="w-20 h-24 lg:h-44 lg:w-36"></img>
                                 </div>
-                                <div class="small-hero-under"></div>
+                                <div className="small-hero-under"></div>
                             </div>
 
-                            <div class="small-hero-main w-24 lg:w-44 lg:h-44">
+                            <div className="small-hero-main w-24 lg:w-44 lg:h-44">
                                 <div className="bg-black flex justify-center items-center">
                                     <img src="/headphones4.png" className="w-20 h-24 lg:h-44 lg:w-36"></img>
                                 </div>
-                                <div class="small-hero-under"></div>
+                                <div className="small-hero-under"></div>
                             </div>
                         </div>
                     </div>

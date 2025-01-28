@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AdminHeader from "../components/AdminHeader";
 import AdminTable from "../components/AdminTable";
+import Head from "next/head";
 
 export default function AdminPage({}) {
     const [header, setHeader] = useState('Каталог')
@@ -62,6 +63,9 @@ export default function AdminPage({}) {
 
     return (
         <>
+            <Head>
+                <title>Yegourt - Панель администратора</title>
+            </Head>
             <div className="w-screen h-screen bg-admin-gray ">
                 <AdminHeader />
 

@@ -2,7 +2,7 @@ export default function ContactSection({scrollUp}) {
     return (
         <>
             <div className="w-350 mx-auto pb-2.5 lg:w-tablet xl:w-notepad 2xl:w-desktop">
-                <div class="contact-main mb-2.5 py-5 px-2.5 mt-11 mb-2.5 2xl:mt-20 lg:py-10">
+                <div className="contact-main mb-2.5 py-5 px-2.5 mt-11 mb-2.5 2xl:mt-20 lg:py-10">
                     <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:grid-flow-col lg:mb-20 lg:pl-14 lg:pr-4">
                         <div>
                             <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter text-center mb-5 lg:text-2xl lg:text-left lg:font-medium">Контактная информация</h2>
@@ -44,8 +44,8 @@ export default function ContactSection({scrollUp}) {
                         <img src="/logo.png" className="w-28 mx-auto lg:-mt-14"></img>
                     </div>
 
-                    <div class="contact-center"></div>
-                    <div class="contact-under"></div>
+                    <div className="contact-center"></div>
+                    <div className="contact-under"></div>
                 </div>
             </div>
         </>
