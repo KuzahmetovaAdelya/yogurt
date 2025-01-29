@@ -2,9 +2,9 @@ import ContactSection from './ContacsSection.js'
 
 export default function CooperMainSection({scrollUp}) {
 
-    function handleOpen(id) {
-        let elemId = id + 'elem'
-        let elem = document.getElementById(elemId)
+    function handleOpen(id: string) {
+        let elemId: string = id + 'elem'
+        let elem: HTMLElement = document.getElementById(elemId)
         elem.classList.toggle('hidden')
     }
 

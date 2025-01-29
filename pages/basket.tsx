@@ -6,7 +6,7 @@ import ContactsSection from "../components/ContacsSection";
 import Head from "next/head";
 
 export default function BasketPage({}) {
-    const refScrollUp = useRef()
+    const refScrollUp: any = useRef(0)
     
     function handleScrollUp() {
         refScrollUp.current.scrollIntoView({behavior: "smooth"})

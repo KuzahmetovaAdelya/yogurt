@@ -6,7 +6,7 @@ import Head from "next/head";
 export default function AdminPage({}) {
     const [header, setHeader] = useState('Коллаборации')
 
-    let informationList = [{
+    let informationList: any[] = [{
             pageName: "collabs",
             titles: [
                 'Фото',

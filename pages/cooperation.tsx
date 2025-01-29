@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import Head from "next/head";
 
 export default function CooperPage() {
-    const refScrollUp = useRef()
+    const refScrollUp: any = useRef(0)
 
     function handleScrollUp() {
       refScrollUp.current.scrollIntoView({behavior: "smooth"})

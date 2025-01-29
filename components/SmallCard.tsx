@@ -2,11 +2,11 @@ export default function SmallCard({}) {
     return (
         <>
             <div>
-                <div class="hero-main mb-5 lg:w-76 lg:h-80 2xl:mb-2.5">
+                <div className="hero-main mb-5 lg:w-76 lg:h-80 2xl:mb-2.5">
                     <div className="bg-gray h-44 w-full flex justify-center items-center lg:h-full">
                         <img src="/ipods2.png" className="w-32 lg:w-72 lg:h-60 h-28"></img>
                     </div>
-                    <div class="hero-under"></div>
+                    <div className="hero-under"></div>
                 </div>
 
                 <div className="space-y-2.5 mb-2.5 lg:flex lg:justify-between lg:items-start lg:space-y-0 xl:mb-5">

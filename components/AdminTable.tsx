@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "./AdminModal";
 
 export default function AdminTable({header, informationList}) {
-    let pageName;
+    let pageName: string;
 
     if (header === 'Каталог') {
         pageName = 'catalog'
@@ -12,7 +12,7 @@ export default function AdminTable({header, informationList}) {
         pageName = 'collabs'
     }
 
-    let info = {};
+    let info: {pageName: string, titles: string[], data: any[]};
 
 
     for (let i in informationList) {
@@ -24,7 +24,7 @@ export default function AdminTable({header, informationList}) {
     let [isModalOpen, setIsModalOpen] = useState(false)
     let [itemId, setItemId] = useState(1);
 
-    function openModal(id) {
+    function openModal(id: number) {
         setItemId(id);
         setIsModalOpen(true);
     }

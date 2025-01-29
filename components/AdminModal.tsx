@@ -1,13 +1,4 @@
 export default function Modal({closeModal, id, pageName}) {
-    // let pageName;
-
-    // if (header === 'Каталог') {
-    //     pageName = 'catalog'
-    // } else if (header === 'Концепции') {
-    //     pageName = 'concepts'
-    // } else {
-    //     pageName = 'collabs'
-    // }
 
     return (
         <div className="modal block fixed z-50 top-0 left-0 w-screen h-screen bg-rgba-black">
