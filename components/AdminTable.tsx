@@ -64,8 +64,8 @@ export default function AdminTable({header, informationList}) {
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.type}</td>
                         <td className='text-center font-medium text-lg text-white leading-4.5 w-270'>{item.material}</td>
                         <td className='space-x-2.5 w-24'>
-                            <button className='p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' className='w-19 h-19 group-hover:contrast-200'></img></button>
-                            <button className='p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group'><img src='/delete1.svg' className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
+                            <button className='transition p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' className='w-19 h-19 group-hover:contrast-200'></img></button>
+                            <button className='transition p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group'><img src='/delete1.svg' className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
                         </td>
                     </tr>)}
 
@@ -78,8 +78,8 @@ export default function AdminTable({header, informationList}) {
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.price}</td>
                         <td className='space-x-2.5 w-24'>
-                            <button className='p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' className='w-19 h-19 group-hover:contrast-200'></img></button>
-                            <button className='p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group'><img src='/delete1.svg' className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
+                            <button className='transition p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' className='w-19 h-19 group-hover:contrast-200'></img></button>
+                            <button className='transition p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group'><img src='/delete1.svg' className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
                         </td>
                     </tr>)}
 
