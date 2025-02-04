@@ -44,8 +44,8 @@ export default function AdminTable({header, informationList}) {
                             title === 'Описание' ?
                             <th key={title} className="py-5 text-white opacity-70 text-p text-center font-semibold w-96">{title}</th> :
                             title === 'Материал' ?
-                            <th className="py-5 text-white opacity-70 text-p text-center font-semibold w-270">{title}</th> :
-                            <th className="py-5 text-white opacity-70 text-p text-center font-semibold">{title}</th>
+                            <th key={title} className="py-5 text-white opacity-70 text-p text-center font-semibold w-270">{title}</th> :
+                            <th key={title} className="py-5 text-white opacity-70 text-p text-center font-semibold">{title}</th>
                         }</>)}
                         <th></th>
                     </tr>
