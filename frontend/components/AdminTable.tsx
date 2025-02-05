@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "./AdminModal";
 
-export default function AdminTable({header, informationList}) {
+export default function AdminTable({header, informationList, titlesList}) {
     let pageName: string;
 
     if (header === 'Каталог') {
@@ -12,11 +12,11 @@ export default function AdminTable({header, informationList}) {
         pageName = 'collabs'
     }
 
-    let info: {pageName: string, titles: string[], data: any[]};
+    let info: any[];
 
 
-    for (let i in informationList) {
-        if (informationList[i].pageName === pageName) {
+    for (let i in titlesList) {
+        if (titlesList[i].pageName === pageName) {
             info = informationList[i];
         }
     }
@@ -32,7 +32,6 @@ export default function AdminTable({header, informationList}) {
     function closeModal() {
         setIsModalOpen(false)
     }
-
 
 
     return (
@@ -59,7 +58,7 @@ export default function AdminTable({header, informationList}) {
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.price}</td>
-                        <td className='text-center font-medium text-lg text-white leading-4.5'>{item.discount}</td>
+                        <td className='text-center font-medium text-lg text-white leading-4.5'>{item.discount}%</td>
                         <td className='text-center font-medium text-lg text-white leading-4.5 w-96 line-clamp-4 hover:line-clamp-none cursor-pointer'>{item.description}</td>
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.type}</td>
                         <td className='text-center font-medium text-lg text-white leading-4.5 w-270'>{item.material}</td>
