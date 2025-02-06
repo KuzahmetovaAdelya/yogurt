@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Item {
+export class Concept {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -13,16 +13,4 @@ export class Item {
 
     @Column()
     price: number;
-
-    @Column()
-    discount: number;
-
-    @Column()
-    description: string;
-
-    @Column()
-    type: string;
-
-    @Column()
-    material: string;
 }

@@ -12,15 +12,6 @@ export default function AdminTable({header, informationList, titlesList}) {
         pageName = 'collabs'
     }
 
-    let info: any[];
-
-
-    for (let i in titlesList) {
-        if (titlesList[i].pageName === pageName) {
-            info = informationList[i];
-        }
-    }
-
     let [isModalOpen, setIsModalOpen] = useState(false)
     let [itemId, setItemId] = useState(1);
 
@@ -39,7 +30,7 @@ export default function AdminTable({header, informationList, titlesList}) {
             <table className="bg-black w-notepad mt-5 rounded-xl relative">
                 <thead className="border-b border-b-full-black">
                     <tr>
-                        {info.titles.map((title) => <>{
+                        {titlesList.map((title: string) => <>{
                             title === 'Описание' ?
                             <th key={title} className="py-5 text-white opacity-70 text-p text-center font-semibold w-96">{title}</th> :
                             title === 'Материал' ?
@@ -51,9 +42,10 @@ export default function AdminTable({header, informationList, titlesList}) {
                 </thead>
                 <tbody id="table">
                     {pageName === 'catalog' &&
-                     info.data.map((item) => <tr className='border-b border-b-gray' key={item.id}>
-                        {item.img !== '' ?
-                            <td className='p-2.5 w-20'><img className='w-60px h-60px' src={item.img}></img></td> :
+                    informationList.map((item: {id: number, image: string, name: string, price: number, discount: number, description: string, type: string, material: string}) => 
+                    <tr className='border-b border-b-gray' key={item.id}>
+                        {item.image !== '' ?
+                            <td className='p-2.5 w-20'><img className='w-60px h-60px' src={item.image}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
@@ -68,10 +60,11 @@ export default function AdminTable({header, informationList, titlesList}) {
                         </td>
                     </tr>)}
 
-                    {pageName === 'concepts' &&
-                     info.data.map((item) => <tr className='border-b border-b-gray' key={item.id}>
-                        {item.img !== '' ?
-                            <td className='p-2.5 w-20'><img className='w-60px h-60px' src={item.img}></img></td> :
+                    {/* {pageName === 'concepts' &&
+                    info.data.map((item) => 
+                    <tr className='border-b border-b-gray' key={item.id}>
+                        {item.image !== '' ?
+                            <td className='p-2.5 w-20'><img className='w-60px h-60px' src={item.image}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
@@ -98,7 +91,9 @@ export default function AdminTable({header, informationList, titlesList}) {
                             <button className='transition p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' className='w-19 h-19 group-hover:contrast-200'></img></button>
                             <button className='transition p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group'><img src='/delete1.svg' className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
                         </td>
-                    </tr>)}
+                    </tr>)} */}
+
+
                     <tr>
                         <td></td>
                         <td></td>
