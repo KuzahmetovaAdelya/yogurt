@@ -21,7 +21,7 @@ export class ItemsController {
     @Put(':id/update')
     async update(@Param('id') id: any, @Body() itemData: Item): Promise<any> {
         itemData.id = Number(id);
-        console.log('Update #' + itemData.id);
+        console.log('Update item #' + itemData.id);
         return this.itemsService.update(itemData);
     }
 
