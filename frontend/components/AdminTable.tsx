@@ -1,16 +1,7 @@
 import { useState } from "react";
 import Modal from "./AdminModal";
 
-export default function AdminTable({header, informationList, titlesList}) {
-    let pageName: string;
-
-    if (header === 'Каталог') {
-        pageName = 'catalog'
-    } else if (header === 'Концепции') {
-        pageName = 'concepts'
-    } else {
-        pageName = 'collabs'
-    }
+export default function AdminTable({pageName, informationList, titlesList}) {
 
     let [isModalOpen, setIsModalOpen] = useState(false)
     let [itemId, setItemId] = useState(1);
