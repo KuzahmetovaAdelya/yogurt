@@ -1,4 +1,38 @@
+import { useEffect, useState } from "react";
+
 export default function ModalCreation({closeModal, pageName}) {
+    const [photoFiles, setPhotoFiles] = useState([]);
+
+    useEffect(() => {
+        let element: HTMLElement = document.getElementById('file')
+        element.addEventListener('change', function(){
+            let value: string = this.value;
+            if( value ){
+                let oldPhotoFiles = photoFiles;
+                oldPhotoFiles.push(value);
+                setPhotoFiles(oldPhotoFiles);
+            }
+        });
+    }, [])
+
+    function deletePhoto(name: string) {
+        let indexOfPhoto: number = photoFiles.indexOf(name);
+        let oldPhotoFiles: string[] = photoFiles;
+        oldPhotoFiles.splice(indexOfPhoto, 1);
+        setPhotoFiles(oldPhotoFiles);
+        console.log(photoFiles)
+    }
+
+    function sendToServer() {
+
+        if (pageName === 'catalog') {
+
+        } else if (pageName === 'concepts') {
+
+        } else {
+
+        }
+    }
 
     return (
         <div className="modal block fixed z-50 top-0 left-0 w-screen h-screen bg-rgba-black">
@@ -10,41 +44,22 @@ export default function ModalCreation({closeModal, pageName}) {
                 <div>
                     <form method="post">
                         <p className="font-normal text-sm">Фото</p>
-                        <div className="w-500 flex items-start justify-between mt-2.5">
+                        <div className=" flex items-start justify-between mt-2.5">
                             <input type="file" id="file" name="file" className="hidden"></input>
                             <label draggable="true" htmlFor="file" className="hover:bg-gray hover:text-admin-gray transition cursor-pointer text-big-para-2xl flex items-center justify-center w-148 h-114 bg-admin-gray rounded-basket">
                                 <p className="w-max leading-none align-middle">+</p>
                             </label>
 
                             
-                            <div className="grid grid-cols-2 w-300 gap-2.5">
-                                    <div className="flex items-center gap-9">
-                                        <p className="text-sm font-medium">ФОТО1.jpg</p>
-                                        <button className="transition group hover:bg-admin-black border border-light-gray bg-light-gray w-9 h-9 flex items-center justify-center rounded-basket">
-                                            <img src="/delete1.svg" className="w-6 group-hover:contrast-200 group-hover:invert"></img>
-                                        </button>
-                                    </div>
-
-                                    <div className="flex items-center gap-9">
-                                        <p className="text-sm font-medium">ФОТО2.jpg</p>
-                                        <button className="transition group hover:bg-admin-black border border-light-gray bg-light-gray w-9 h-9 flex items-center justify-center rounded-basket">
-                                            <img src="/delete1.svg" className="w-6 group-hover:contrast-200 group-hover:invert"></img>
-                                        </button>
-                                    </div>
-
-                                    <div className="flex items-center gap-9">
-                                        <p className="text-sm font-medium">ФОТО3.jpg</p>
-                                        <button className="transition group hover:bg-admin-black border border-light-gray bg-light-gray w-9 h-9 flex items-center justify-center rounded-basket">
-                                            <img src="/delete1.svg" className="w-6 group-hover:contrast-200 group-hover:invert"></img>
-                                        </button>
-                                    </div>
-
-                                    <div className="flex items-center gap-9">
-                                        <p className="text-sm font-medium">ФОТО4.jpg</p>
-                                        <button className="transition group hover:bg-admin-black border border-light-gray bg-light-gray w-9 h-9 flex items-center justify-center rounded-basket">
-                                            <img src="/delete1.svg" className="w-6 group-hover:contrast-200 group-hover:invert"></img>
-                                        </button>
-                                    </div>
+                            <div className="grid grid-cols-2 w-600 gap-2.5">
+                                    {photoFiles.map((photo: string) => 
+                                        <div className="flex items-center justify-between w-72" key={photo}>
+                                            <p className="text-sm font-medium">{photo.split("\\")[photo.split("\\").length - 1]}</p>
+                                            <button onClick={() => deletePhoto(photo)} type="button" title="delete" className="transition group hover:bg-admin-black border border-light-gray bg-light-gray w-9 h-9 flex items-center justify-center rounded-basket">
+                                                <img alt="delete" src="/delete1.svg" className="w-6 group-hover:contrast-200 group-hover:invert"></img>
+                                            </button>
+                                        </div>
+                                    )}
                             </div>                            
                         </div>
 
@@ -143,7 +158,7 @@ export default function ModalCreation({closeModal, pageName}) {
 
                             <div></div>
 
-                            <button type="submit" className="self-end justify-self-end bg-blue h-9 w-52 rounded-basket hover:bg-white hover:text-blue transition">Сохранить</button>
+                            <button title="send" type="submit" className="self-end justify-self-end bg-blue h-9 w-52 rounded-basket hover:bg-white hover:text-blue transition">Сохранить</button>
                         </div>
                     </form>
                 </div>
