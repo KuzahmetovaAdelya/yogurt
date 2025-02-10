@@ -5,7 +5,7 @@ export class Concept {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column("simple-array")
     image: string;
 
     @Column()

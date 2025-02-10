@@ -5,7 +5,7 @@ export class Collab {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column("simple-array")
     image: string;
 
     @Column()

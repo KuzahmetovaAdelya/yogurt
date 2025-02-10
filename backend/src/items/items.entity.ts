@@ -5,8 +5,8 @@ export class Item {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    image: string;
+    @Column("simple-array")
+    image: string[];
 
     @Column()
     name: string;

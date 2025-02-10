@@ -54,7 +54,7 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     {pageName === 'catalog' &&
                     informationList.map((item: {id: number, image: string[], name: string, price: number, discount: number, description: string, type: string, material: string}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
-                        {item.image[0] !== '' ?
+                        {item.image.length !== 0 ?
                             <td className='p-2.5 w-20'><img alt="item image" className='w-60px h-60px' src={item.image[0]}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
@@ -73,7 +73,7 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     {pageName === 'concepts' &&
                     informationList.map((item: {id: number, image: string[], name: string, price: number}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
-                        {item.image[0] !== '' ?
+                        {item.image.length !== 0 ?
                             <td className='p-2.5 w-20'><img alt="concept" className='w-60px h-60px' src={item.image[0]}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
@@ -88,7 +88,7 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     {pageName === 'collabs' &&
                     informationList.map((item: {id: number, image: string[], name: string, description: string, instagram: string, telegram: number, vkontakte: string, youtube: string}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
-                        {item.image[0] !== '' ?
+                        {item.image.length !== 0 ?
                             <td className='p-2.5 w-20'><img alt="collab" className='w-60px h-60px rounded-full' src={item.image[0]}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }

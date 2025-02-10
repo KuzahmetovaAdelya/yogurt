@@ -3,11 +3,19 @@ import AdminHeader from "../components/AdminHeader";
 import AdminTable from "../components/AdminTable";
 import Head from "next/head";
 import ModalCreation from "../components/AdminCreationModal";
+import { trackPromise, usePromiseTracker } from "react-promise-tracker";
+import axios from "axios";
+import { error } from "console";
+import { host } from "../host";
+
+const area = 'informationList';
+const apiUrl = `${host}concepts`
 
 export default function AdminPage({}) {
     const header: string = 'Концепции'
     const [informationList, setInformationList] = useState([])
     let [isModalOpen, setIsModalOpen] = useState(false)
+    const { promiseInProgress } = usePromiseTracker({ area });
 
     let pageName: string;
 
@@ -28,9 +36,14 @@ export default function AdminPage({}) {
     }
 
     useEffect(() => {
-        fetch("http://localhost:3001/concepts")
-        .then((response) => response.json())
-        .then((data) => setInformationList(data));
+        // fetch("http://localhost:3001/concepts")
+        // .then((response) => response.json())
+        // .then((data) => setInformationList(data));
+        trackPromise(axios.get(apiUrl), area).then(({ data }) => {
+            setInformationList(data);
+        }).catch((error) => {
+            console.log(error)
+        });
     }, [informationList])
 
     let titlesList: string[] = [
