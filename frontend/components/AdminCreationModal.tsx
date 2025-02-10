@@ -3,30 +3,33 @@ import { useEffect, useState } from "react";
 export default function ModalCreation({closeModal, pageName}) {
     const [photoFiles, setPhotoFiles] = useState([]);
 
-    useEffect(() => {
-        let element: HTMLElement = document.getElementById('file')
-        element.addEventListener('change', function(){
-            let value: string = this.value;
-            if( value ){
-                let oldPhotoFiles = photoFiles;
-                oldPhotoFiles.push(value);
-                setPhotoFiles(oldPhotoFiles);
-            }
-        });
-    }, [])
+    // useEffect(() => {
+    //     let element: HTMLElement = document.getElementById('file')
+    //     element.addEventListener('change', function(){
+            
+    //     });
+    // }, [])
+
+    function handlePhotoChange(e) {
+        let value: string = e.target.value;
+        if( value ){
+            let oldPhotoFiles = photoFiles;
+            oldPhotoFiles.push(value);
+            setPhotoFiles(oldPhotoFiles);
+        }
+    }
 
     function deletePhoto(name: string) {
         let indexOfPhoto: number = photoFiles.indexOf(name);
         let oldPhotoFiles: string[] = photoFiles;
         oldPhotoFiles.splice(indexOfPhoto, 1);
         setPhotoFiles(oldPhotoFiles);
-        console.log(photoFiles)
     }
 
     function sendToServer() {
-
+        
         if (pageName === 'catalog') {
-
+            // let name: string = 
         } else if (pageName === 'concepts') {
 
         } else {
@@ -45,7 +48,7 @@ export default function ModalCreation({closeModal, pageName}) {
                     <form method="post">
                         <p className="font-normal text-sm">Фото</p>
                         <div className=" flex items-start justify-between mt-2.5">
-                            <input type="file" id="file" name="file" className="hidden"></input>
+                            <input type="file" id="file" name="file" className="hidden" onChange={handlePhotoChange}></input>
                             <label draggable="true" htmlFor="file" className="hover:bg-gray hover:text-admin-gray transition cursor-pointer text-big-para-2xl flex items-center justify-center w-148 h-114 bg-admin-gray rounded-basket">
                                 <p className="w-max leading-none align-middle">+</p>
                             </label>

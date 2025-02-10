@@ -52,10 +52,10 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                 </thead>
                 <tbody id="table">
                     {pageName === 'catalog' &&
-                    informationList.map((item: {id: number, image: string, name: string, price: number, discount: number, description: string, type: string, material: string}) => 
+                    informationList.map((item: {id: number, image: string[], name: string, price: number, discount: number, description: string, type: string, material: string}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
-                        {item.image !== '' ?
-                            <td className='p-2.5 w-20'><img alt="item image" className='w-60px h-60px' src={item.image}></img></td> :
+                        {item.image[0] !== '' ?
+                            <td className='p-2.5 w-20'><img alt="item image" className='w-60px h-60px' src={item.image[0]}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
@@ -71,10 +71,10 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     </tr>)}
 
                     {pageName === 'concepts' &&
-                    informationList.map((item: {id: number, image: string, name: string, price: number}) => 
+                    informationList.map((item: {id: number, image: string[], name: string, price: number}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
-                        {item.image !== '' ?
-                            <td className='p-2.5 w-20'><img alt="concept" className='w-60px h-60px' src={item.image}></img></td> :
+                        {item.image[0] !== '' ?
+                            <td className='p-2.5 w-20'><img alt="concept" className='w-60px h-60px' src={item.image[0]}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
@@ -86,10 +86,10 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     </tr>)}
 
                     {pageName === 'collabs' &&
-                    informationList.map((item: {id: number, image: string, name: string, description: string, instagram: string, telegram: number, vkontakte: string, youtube: string}) => 
+                    informationList.map((item: {id: number, image: string[], name: string, description: string, instagram: string, telegram: number, vkontakte: string, youtube: string}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
-                        {item.image !== '' ?
-                            <td className='p-2.5 w-20'><img alt="collab" className='w-60px h-60px rounded-full' src={item.image}></img></td> :
+                        {item.image[0] !== '' ?
+                            <td className='p-2.5 w-20'><img alt="collab" className='w-60px h-60px rounded-full' src={item.image[0]}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
