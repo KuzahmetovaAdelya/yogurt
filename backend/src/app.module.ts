@@ -9,10 +9,14 @@ import { CollabsModule } from './collabs/collabs.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db',
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres', // Replace with your PostgreSQL username
+      password: 'admin', // Replace with your PostgreSQL password
+      database: 'yogurt',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: true, // Set to false in production
     }),
     ItemsModule,
     ConceptsModule,

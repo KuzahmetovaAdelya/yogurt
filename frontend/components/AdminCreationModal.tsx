@@ -1,4 +1,16 @@
 import { useEffect, useState } from "react";
+import host from "../host";
+import { formToJSON } from "axios";
+
+interface CatalogForm {
+    image: string[],
+    name: string,
+    price: number,
+    discount: number,
+    description: string,
+    type: string,
+    material: string
+}
 
 export default function ModalCreation({closeModal, pageName}) {
     const [photoFiles, setPhotoFiles] = useState([]);
@@ -26,14 +38,66 @@ export default function ModalCreation({closeModal, pageName}) {
         setPhotoFiles(oldPhotoFiles);
     }
 
-    function sendToServer() {
-        
+    function handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);     
+
         if (pageName === 'catalog') {
-            // let name: string = 
+            let body: any = {
+                image: photoFiles,
+                name: formData.get("name"),
+                price: formData.get("price"),
+                discount: formData.get("discount"),
+                description: formData.get("description"),
+                type: formData.get("type"),
+                material: formData.get("material")
+            }
+            const axios = require('axios');
+            axios.post(`${host}items/create`, body)
+            .then((response: any) => { // Получение данных и их обработка
+            })
+            .catch((error: any) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
+            console.error(error);});
+
+            document.getElementById("creationForm").reset();
+            setPhotoFiles([]);
+            closeModal();
         } else if (pageName === 'concepts') {
+            let body: any = {
+                image: photoFiles,
+                name: formData.get("name"),
+                price: formData.get("price"),
+            }
+            const axios = require('axios');
+            axios.post(`${host}concepts/create`, body)
+            .then((response: any) => { // Получение данных и их обработка
+            })
+            .catch((error: any) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
+            console.error(error);});
 
+            document.getElementById("creationForm").reset();
+            setPhotoFiles([]);
+            closeModal();
         } else {
+            let body: any = {
+                image: photoFiles,
+                name: formData.get("name"),
+                description: formData.get("description"),
+                instagram: formData.get("instagram"),
+                telegram: formData.get("telegram"),
+                vkontakte: formData.get("vkontakte"),
+                youtube: formData.get("youtube")
+            }
+            const axios = require('axios');
+            axios.post(`${host}collabs/create`, body)
+            .then((response: any) => { // Получение данных и их обработка
+            })
+            .catch((error: any) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
+            console.error(error);});
 
+            document.getElementById("creationForm").reset();
+            setPhotoFiles([]);
+            closeModal();
         }
     }
 
@@ -45,10 +109,10 @@ export default function ModalCreation({closeModal, pageName}) {
                 </div>
 
                 <div>
-                    <form method="post">
+                    <form method="post" onSubmit={handleSubmit} id="creationForm">
                         <p className="font-normal text-sm">Фото</p>
                         <div className=" flex items-start justify-between mt-2.5">
-                            <input type="file" id="file" name="file" className="hidden" onChange={handlePhotoChange}></input>
+                            <input type="file" id="file" name="file" className="hidden" accept=".jpg, .jpeg, .png" onChange={handlePhotoChange}></input>
                             <label draggable="true" htmlFor="file" className="hover:bg-gray hover:text-admin-gray transition cursor-pointer text-big-para-2xl flex items-center justify-center w-148 h-114 bg-admin-gray rounded-basket">
                                 <p className="w-max leading-none align-middle">+</p>
                             </label>
@@ -130,22 +194,22 @@ export default function ModalCreation({closeModal, pageName}) {
 
                             <div className="flex flex-col gap-2.5 mt-2.5">
                                 <label htmlFor="instagram" className="font-normal text-sm cursor-pointer">Инстаграм</label>
-                                <input type="url" name="instagram" id="instagram" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="/" />
+                                <input type="url" name="instagram" id="instagram" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="https://" />
                             </div>
 
                             <div className="flex flex-col gap-2.5">
                                 <label htmlFor="telegram" className="font-normal text-sm cursor-pointer">Телеграм</label>
-                                <input type="url" name="telegram" id="telegram" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="/" />
+                                <input type="url" name="telegram" id="telegram" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="https://" />
                             </div>
 
                             <div className="flex flex-col gap-2.5">
                                 <label htmlFor="vkontakte" className="font-normal text-sm cursor-pointer">ВК</label>
-                                <input type="url" name="vkontakte" id="vkontakte" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="/" />
+                                <input type="url" name="vkontakte" id="vkontakte" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="https://" />
                             </div>
 
                             <div className="flex flex-col gap-2.5">
                                 <label htmlFor="youtube" className="font-normal text-sm cursor-pointer">Ютуб</label>
-                                <input type="url" name="youtube" id="youtube" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="/" />
+                                <input type="url" name="youtube" id="youtube" className="font-serif focus-visible:outline-1 w-full bg-admin-gray font-sm pl-5 py-1.5 pr-2.5 rounded-basket" placeholder="https://" />
                             </div>
                             </>
                             }

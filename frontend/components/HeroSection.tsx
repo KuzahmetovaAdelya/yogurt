@@ -23,7 +23,6 @@ export default function HeroSection({}) {
                 </div>
                 <div className="h-1"></div>
                 <hr className="w-phone mx-auto border-gray pb-10 mt-10 lg:w-tablet lg:mt-8 xl:w-notepad xl:mt-5 xl:pb-16 2xl:w-desktop"></hr>
-
             </div>
             
         </>

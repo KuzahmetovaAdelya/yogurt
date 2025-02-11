@@ -3,7 +3,7 @@ import AdminHeader from "../components/AdminHeader";
 import AdminTable from "../components/AdminTable";
 import Head from "next/head";
 import ModalCreation from "../components/AdminCreationModal";
-import { host } from "../host";
+import host from "../host";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import axios from "axios";
 

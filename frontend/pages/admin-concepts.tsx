@@ -6,7 +6,7 @@ import ModalCreation from "../components/AdminCreationModal";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import axios from "axios";
 import { error } from "console";
-import { host } from "../host";
+import host from "../host";
 
 const area = 'informationList';
 const apiUrl = `${host}concepts`
