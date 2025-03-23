@@ -44,7 +44,7 @@ export default function AdminPage({}) {
         }).catch((error) => {
             console.log(error)
         });
-    }, [informationList])
+    }, [])
 
     let titlesList: string[] = [
         'Фото',

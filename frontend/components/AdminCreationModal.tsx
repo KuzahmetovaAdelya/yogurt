@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import host from "../host";
 import { formToJSON } from "axios";
+import axios from "axios";
+import { trackPromise } from "react-promise-tracker";
+
 
 interface CatalogForm {
     image: string[],
@@ -21,14 +24,26 @@ export default function ModalCreation({closeModal, pageName}) {
             
     //     });
     // }, [])
+    // let fs = require('fs');
+    // let fileContent = fs.readFileSync('file.txt', 'utf8');
+    // console.log(fileContent);
 
     function handlePhotoChange(e) {
-        let value: string = e.target.value;
-        if( value ){
+        let form: HTMLFormElement = document.getElementById("creationForm");
+        let formData = new FormData(form);
+        let value: any = formData.get("file")
+        if(value){
             let oldPhotoFiles = photoFiles;
             oldPhotoFiles.push(value);
             setPhotoFiles(oldPhotoFiles);
         }
+        // }
+        // let value: string = e.target.value;
+        // if(value){
+        //     let oldPhotoFiles = photoFiles;
+        //     oldPhotoFiles.push(value);
+        //     setPhotoFiles(oldPhotoFiles);
+        // }
     }
 
     function deletePhoto(name: string) {
@@ -38,67 +53,58 @@ export default function ModalCreation({closeModal, pageName}) {
         setPhotoFiles(oldPhotoFiles);
     }
 
+
     function handleSubmit(e) {
         e.preventDefault();
-        const formData = new FormData(e.target);     
-
+        let form: HTMLFormElement = document.getElementById("creationForm");
+        let formData: FormData = new FormData(form);
+        for (let i: number = 0; i < photoFiles.length; i++) {
+            formData.append("files", photoFiles[i])
+        }
+        formData.delete("file")
         if (pageName === 'catalog') {
-            let body: any = {
-                image: photoFiles,
-                name: formData.get("name"),
-                price: formData.get("price"),
-                discount: formData.get("discount"),
-                description: formData.get("description"),
-                type: formData.get("type"),
-                material: formData.get("material")
-            }
-            const axios = require('axios');
-            axios.post(`${host}items/create`, body)
-            .then((response: any) => { // Получение данных и их обработка
-            })
-            .catch((error: any) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
-            console.error(error);});
+            let apiUrl: string = `${host}items/create`
+            trackPromise(axios.post(apiUrl, formData)).then(({ data }) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error.message)
+            });
 
-            document.getElementById("creationForm").reset();
+            form.reset();
             setPhotoFiles([]);
             closeModal();
         } else if (pageName === 'concepts') {
-            let body: any = {
-                image: photoFiles,
-                name: formData.get("name"),
-                price: formData.get("price"),
-            }
-            const axios = require('axios');
-            axios.post(`${host}concepts/create`, body)
-            .then((response: any) => { // Получение данных и их обработка
-            })
-            .catch((error: any) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
-            console.error(error);});
+         
+            let apiUrl: string = `${host}concepts/create`
+            trackPromise(axios.post(apiUrl, formData)).then(({ data }) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error.message)
+            });
 
-            document.getElementById("creationForm").reset();
+            form.reset();
             setPhotoFiles([]);
             closeModal();
         } else {
-            let body: any = {
-                image: photoFiles,
-                name: formData.get("name"),
-                description: formData.get("description"),
-                instagram: formData.get("instagram"),
-                telegram: formData.get("telegram"),
-                vkontakte: formData.get("vkontakte"),
-                youtube: formData.get("youtube")
-            }
-            const axios = require('axios');
-            axios.post(`${host}collabs/create`, body)
-            .then((response: any) => { // Получение данных и их обработка
-            })
-            .catch((error: any) => { // Если запрос не будет выполнен, то ошибка выводится в терминал
-            console.error(error);});
 
-            document.getElementById("creationForm").reset();
+            let apiUrl: string = `${host}collabs/create`
+            trackPromise(axios.post(apiUrl, formData)).then(({ data }) => {
+                console.log(data);
+            }).catch((error) => {
+                console.log(error.message)
+            });
+
+            form.reset();
             setPhotoFiles([]);
             closeModal();
         }
+        const apiUrl = `${host}items/createfolder`
+
+        trackPromise(axios.post(apiUrl, formData)).then(({ data }) => {
+            console.log(data);
+        }).catch((error) => {
+            console.log(error.message)
+        });
     }
 
     return (
@@ -109,9 +115,9 @@ export default function ModalCreation({closeModal, pageName}) {
                 </div>
 
                 <div>
-                    <form method="post" onSubmit={handleSubmit} id="creationForm">
+                    <form method="post" onSubmit={handleSubmit} id="creationForm" encType="multipart/form-data">
                         <p className="font-normal text-sm">Фото</p>
-                        <div className=" flex items-start justify-between mt-2.5">
+                        <div className="flex items-start justify-between mt-2.5">
                             <input type="file" id="file" name="file" className="hidden" accept=".jpg, .jpeg, .png" onChange={handlePhotoChange}></input>
                             <label draggable="true" htmlFor="file" className="hover:bg-gray hover:text-admin-gray transition cursor-pointer text-big-para-2xl flex items-center justify-center w-148 h-114 bg-admin-gray rounded-basket">
                                 <p className="w-max leading-none align-middle">+</p>
@@ -121,7 +127,8 @@ export default function ModalCreation({closeModal, pageName}) {
                             <div className="grid grid-cols-2 w-600 gap-2.5">
                                     {photoFiles.map((photo: string) => 
                                         <div className="flex items-center justify-between w-72" key={photo}>
-                                            <p className="text-sm font-medium">{photo.split("\\")[photo.split("\\").length - 1]}</p>
+                                            {/* <p className="text-sm font-medium">{photo.split("\\")[photo.split("\\").length - 1]}</p> */}
+                                            <p className="text-sm font-medium">{photo.name}</p>
                                             <button onClick={() => deletePhoto(photo)} type="button" title="delete" className="transition group hover:bg-admin-black border border-light-gray bg-light-gray w-9 h-9 flex items-center justify-center rounded-basket">
                                                 <img alt="delete" src="/delete1.svg" className="w-6 group-hover:contrast-200 group-hover:invert"></img>
                                             </button>
@@ -226,6 +233,7 @@ export default function ModalCreation({closeModal, pageName}) {
                             <div></div>
 
                             <button title="send" type="submit" className="self-end justify-self-end bg-blue h-9 w-52 rounded-basket hover:bg-white hover:text-blue transition">Сохранить</button>
+                            {/* <button onClick={createFolder} title="send" type="button" className="self-end justify-self-end bg-blue h-9 w-52 rounded-basket hover:bg-white hover:text-blue transition">Сохранить</button> */}
                         </div>
                     </form>
                 </div>

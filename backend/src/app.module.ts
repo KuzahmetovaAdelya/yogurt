@@ -5,6 +5,7 @@ import { ItemsModule } from './items/items.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConceptsModule } from './concepts/concepts.module';
 import { CollabsModule } from './collabs/collabs.module';
+import { ImagesModule } from './images/images.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CollabsModule } from './collabs/collabs.module';
     ItemsModule,
     ConceptsModule,
     CollabsModule,
+    ImagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
