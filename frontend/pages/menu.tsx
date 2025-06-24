@@ -1,6 +1,15 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function MenuPage({}) {
+    const router = useRouter();
+
+    function handleClick() {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        router.push("/");
+    }
+
     return (
         <>
             <Head>
@@ -17,15 +26,16 @@ export default function MenuPage({}) {
                         </a>
                     </div>
 
-                    <div className="absolute flex flex-col gap-5 items-center inset-0 top-60 h-min lg:gap-11 lg:top-40% xl:top-64 *:cursor-pointer 2xl:top-64">
+                    <div className="absolute flex flex-col gap-5 items-center inset-0 top-60 h-min lg:gap-11 lg:top-30% xl:top-20% *:cursor-pointer 2xl:top-64">
                         <a className="text-white font-medium tracking-tighter text-2xl uppercase lg:text-p-lg hover:text-gray" href="/">Главная</a>
                         <a className="text-white font-medium tracking-tighter text-2xl uppercase lg:text-p-lg hover:text-gray" href="/catalog">Каталог</a>
                         <a className="text-white font-medium tracking-tighter text-2xl uppercase lg:text-p-lg hover:text-gray" href="/aboutUs">О нас</a>
                         <a className="text-white font-medium tracking-tighter text-2xl uppercase lg:text-p-lg hover:text-gray" href="/cooperation">сотрудничество</a>
                         <a className="text-white font-medium tracking-tighter text-2xl uppercase lg:text-p-lg hover:text-gray" href="/basket">корзина</a>
+                        <a className="text-white font-medium tracking-tighter text-2xl uppercase lg:text-p-lg hover:text-gray" onClick={handleClick}>выйти</a>
                     </div>
 
-                    <div className="absolute flex items-center justify-evenly inset-0 top-90% h-min *:cursor-pointer lg:justify-center lg:gap-7 lg:top-full *:cursor-pointer">
+                    <div className="absolute flex items-center justify-evenly inset-0 top-90% h-min lg:justify-center lg:gap-7 lg:top-full xl:top-90% 2xl:top-full *:cursor-pointer">
                         <a href="" className="group"><img src="/insta.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12 2xl:h-12"></img></a>
                         <a href="" className="group"><img src="/telega.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12 2xl:h-12"></img></a>
                         <a href="" className="group"><img src="/vk.svg" className="group-hover:opacity-40 w-10 xl:w-11 2xl:w-12 2xl:h-12"></img></a>

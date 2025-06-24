@@ -6,11 +6,20 @@ import ModalCreation from "../components/AdminCreationModal";
 import host from "../host";
 import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 import axios from "axios";
+import { useRouter } from 'next/router';
+import { jwtDecode } from "jwt-decode";
 
 const area = 'informationList';
 const apiUrl = `${host}items`
 
+interface DecodedToken {
+    userId: number;
+    userRole: string;
+    exp: number;
+}
+
 export default function AdminPage({}) {
+    const router = useRouter();
     const header: string = 'Каталог'
     const [informationList, setInformationList] = useState([])
     let [isModalOpen, setIsModalOpen] = useState(false)
@@ -34,17 +43,51 @@ export default function AdminPage({}) {
         setIsModalOpen(false)
     }
 
-    useEffect(() => {
-        // fetch("http://localhost:3001/items")
-        // .then((response) => response.json())
-        // .then((data) => setInformationList(data));
-
-        trackPromise(axios.get(apiUrl), area).then(({ data }) => {
+    const fetchData = async () => {
+        try {
+            const { data } = await trackPromise(axios.get(apiUrl), area);
             setInformationList(data);
-        }).catch((error) => {
+        } catch (error) {
             console.log(error)
-        });
-    }, [])
+        }
+    };
+
+    useEffect(() => {
+        // Check authentication and role
+        const token = localStorage.getItem('token');
+        if (!token) {
+            router.push('/');
+            return;
+        }
+
+        try {
+            const decodedToken = jwtDecode<DecodedToken>(token);
+            const currentTime = Date.now() / 1000;
+
+            // Check if token is expired
+            if (decodedToken.exp < currentTime) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                router.push('/');
+                return;
+            }
+
+            // Check if user has admin role
+            if (decodedToken.userRole !== 'admin') {
+                router.push('/');
+                return;
+            }
+        } catch (error) {
+            console.error('Error decoding token:', error);
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            router.push('/');
+            return;
+        }
+
+        // If authentication is successful, fetch data
+        fetchData();
+    }, [router])
 
     let titlesList: string[] = [
         'Фото',
@@ -70,12 +113,12 @@ export default function AdminPage({}) {
                         <button type="submit" className="self-end justify-self-end bg-blue h-9 w-10 rounded-basket hover:bg-white hover:text-blue transition text-2xl" onClick={openModal}>+</button>
                     </div>
 
-                    <AdminTable pageName={pageName} informationList={informationList} titlesList={titlesList} />
+                    <AdminTable pageName={pageName} informationList={informationList} titlesList={titlesList} onDelete={fetchData} />
                 </div>
             </div>
             
             {isModalOpen &&
-                <ModalCreation closeModal={closeModal} pageName={pageName} />
+                <ModalCreation closeModal={closeModal} pageName={pageName} onSuccess={fetchData} />
             }
         </>
     )

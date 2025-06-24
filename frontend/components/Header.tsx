@@ -8,7 +8,7 @@ export default function Header({}) {
                     <a className="cursor-pointer hover:opacity-70" href='/menu'>
                         <img src="/menu.svg" className="w-12"></img>
                     </a>
-                    <a className="text-white lg:font-normal tracking-tighter lg:text-p-lg hidden lg:block cursor-pointer hover:opacity-70" href='basket'>Корзина</a>
+                    <a className="text-white lg:font-normal tracking-tighter lg:text-p-lg hidden lg:block cursor-pointer hover:opacity-70" href='/basket'>Корзина</a>
                 </header>
 
                 <hr className="w-phone mx-auto border-gray lg:w-tablet xl:w-notepad 2xl:w-desktop"></hr>

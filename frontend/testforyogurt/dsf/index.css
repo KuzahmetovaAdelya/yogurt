@@ -1,0 +1,13 @@
+.card {
+    background-color: #ffdfdf;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    padding: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 50px;
+}

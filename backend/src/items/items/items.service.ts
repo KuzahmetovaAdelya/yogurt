@@ -25,4 +25,8 @@ export class ItemsService {
     async delete(id: number): Promise<DeleteResult> {
         return await this.itemRepository.delete(id);
     }
+
+    async findOne(id: number): Promise<any> {
+        return await this.itemRepository.findOne({ where: { id } })
+    }
 }

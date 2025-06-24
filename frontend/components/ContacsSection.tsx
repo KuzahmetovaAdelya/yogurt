@@ -2,7 +2,7 @@ export default function ContactSection({scrollUp}) {
     return (
         <>
             <div className="w-350 mx-auto pb-2.5 lg:w-tablet xl:w-notepad 2xl:w-desktop">
-                <div className="contact-main mb-2.5 py-5 px-2.5 mt-11 mb-2.5 2xl:mt-20 lg:py-10">
+                <div className="contact-main mb-2.5 py-5 px-2.5 mt-112xl:mt-20 lg:py-10">
                     <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:grid-flow-col lg:mb-20 lg:pl-14 lg:pr-4">
                         <div>
                             <h2 className="uppercase text-white text-2xl font-semibold tracking-tighter text-center mb-5 lg:text-2xl lg:text-left lg:font-medium">Контактная информация</h2>
@@ -37,8 +37,8 @@ export default function ContactSection({scrollUp}) {
                         <hr className="hidden lg:block mx-auto border-gray lg:w-tablet lg:mb-5 xl:w-notepad 2xl:w-desktop"></hr>
 
                         <div className="flex items-center justify-between mb-7">
-                            <h4 className="text-gray text-p font-medium tracking-tighter uppercase leading-5 uppercase lg:text-2xl lg:leading-tight lg:font-normal">yegourt 2024</h4>
-                            <h4 className="text-gray text-p font-medium tracking-tighter uppercase leading-5 uppercase lg:text-2xl lg:leading-tight lg:font-normal hover:text-white cursor-pointer" onClick={scrollUp}>Вверх</h4>
+                            <h4 className="text-gray text-p font-medium tracking-tighter leading-5 uppercase lg:text-2xl lg:leading-tight lg:font-normal">yegourt 2025</h4>
+                            <h4 className="text-gray text-p font-medium tracking-tighter leading-5 uppercase lg:text-2xl lg:leading-tight lg:font-normal hover:text-white cursor-pointer" onClick={scrollUp}>Вверх</h4>
                         </div>
 
                         <img src="/logo.png" className="w-28 mx-auto lg:-mt-14"></img>

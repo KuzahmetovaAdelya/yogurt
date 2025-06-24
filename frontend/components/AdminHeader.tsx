@@ -1,4 +1,14 @@
+import { useRouter } from "next/router";
+
 export default function AdminHeader({}) {
+    const router = useRouter();
+
+    function handleClick() {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        router.push("/");
+    }
+
     return (
         <>
             <div className="fixed top-0 bg-admin-black w-screen h-24 border-b border-b-gray p-7 z-10">
@@ -7,7 +17,7 @@ export default function AdminHeader({}) {
 
                     <div className="flex items-center gap-2">
                         <p className="text-light-gray font-bold text-admin">Администратор</p>
-                        <a className="cursor-pointer p-2 group hover:bg-white rounded-md transition"><img src="/log-out.svg" className="w-15 group-hover:brightness-0"></img></a>
+                        <a className="cursor-pointer p-2 group hover:bg-white rounded-md transition" onClick={handleClick}><img src="/log-out.svg" className="w-15 group-hover:brightness-0"></img></a>
                     </div>
                 </div>
             </div>

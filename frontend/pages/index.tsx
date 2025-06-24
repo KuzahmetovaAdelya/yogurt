@@ -7,8 +7,10 @@ import CollabSection from "../components/CollabSection";
 import ContactSection from "../components/ContacsSection";
 import { useRef } from "react";
 import Head from "next/head";
+import axios from "axios";
+import host from "../host";
 
-export default function MainPage({}) {
+export default function MainPage({ items, concepts, collabs }) {
     const refScrollUp: any = useRef(0)
 
     function handleScrollUp() {
@@ -27,10 +29,37 @@ export default function MainPage({}) {
                 <HeroSection />
             </div>
             <AboutUsSection />
-            <CatalogSection />
-            <ConceptsSection />
-            <CollabSection />
+            <CatalogSection items={items} />
+            <ConceptsSection concepts={concepts} />
+            <CollabSection collabs={collabs} />
             <ContactSection scrollUp={handleScrollUp} />
         </>
     )
+}
+
+export async function getServerSideProps() {
+    try {
+        const [itemsResponse, conceptsResponse, collabsResponse] = await Promise.all([
+            axios.get(`${host}items`),
+            axios.get(`${host}concepts`),
+            axios.get(`${host}collabs`)
+        ]);
+
+        return {
+            props: {
+                items: itemsResponse.data,
+                concepts: conceptsResponse.data,
+                collabs: collabsResponse.data
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            props: {
+                items: [],
+                concepts: [],
+                collabs: []
+            }
+        };
+    }
 }

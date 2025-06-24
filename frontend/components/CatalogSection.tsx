@@ -1,7 +1,11 @@
 import SmallCard from "./SmallCard";
 import BigCard from "./BigCard";
 
-export default function CatalogSection({}) {
+export default function CatalogSection({ items }) {
+    // Take first 4 items for small cards and next 2 for big cards
+    const smallItems = items.slice(0, 4);
+    const bigItems = items.slice(4, 6);
+
     return (
         <>
             <div className="w-350 mx-auto mt-16 lg:w-tablet xl:w-notepad xl:mt-36 2xl:w-desktop" id="catalog">
@@ -15,20 +19,24 @@ export default function CatalogSection({}) {
                 </div>
 
                 <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 xl:gap-10">
-                    <BigCard />
-                    <BigCard />
+                    {bigItems.map((item) => (
+                        <BigCard 
+                            key={item.id}
+                            item={item}
+                        />
+                    ))}
                 </div>
 
                 <hr className="w-phone mx-auto border-gray my-5 lg:w-tablet lg:mb-10 lg:mt-11 xl:w-notepad xl:mt-16 2xl:w-desktop"></hr>
 
                 <div className="grid grid-cols-2 gap-5 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
-                    <SmallCard />
-                    <SmallCard />
-                    <SmallCard />
-                    <SmallCard />
-                    <div className="xl:hidden"><SmallCard /></div>
-                    <div className="xl:hidden"><SmallCard /></div>
-                    </div>
+                    {smallItems.map((item) => (
+                        <SmallCard 
+                            key={item.id}
+                            item={item}
+                        />
+                    ))}
+                </div>
 
                 <hr className="w-phone mx-auto border-gray mt-5 lg:w-tablet lg:mt-10 xl:w-notepad xl:mt-5 2xl:w-desktop"></hr>
             </div>

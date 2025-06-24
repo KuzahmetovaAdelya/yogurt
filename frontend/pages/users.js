@@ -11,7 +11,7 @@ const Users = ({users}) => {
             <ul className="text-white text-2xl text-regular *:my-2 *:mx-5">
                 {users.map(user => 
                     <li key={user.id}>
-                        <Link href={`/users/${user.id}`}>
+                        <Link href={`/item/${user.id}`}>
                             <p className="hover:text-gray">
                                 {user.name}
                             </p>

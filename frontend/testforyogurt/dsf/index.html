@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <a href="./basket.html">basket</a>
+    <div id="items" class="grid"></div>
+
+    <script>
+        let itemsList = [
+            {
+                id: 1,
+                name: "Test1",
+                price: 2500,
+                discount: 10
+            },
+            {
+                id: 2,
+                name: "Test2",
+                price: 3500,
+                discount: 10
+            },
+            {
+                id: 3,
+                name: "Test3",
+                price: 2000,
+                discount: 0
+            },
+            {
+                id: 4,
+                name: "Test4",
+                price: 2500,
+                discount: 20
+            },
+            {
+                id: 5,
+                name: "Test5",
+                price: 2500,
+                discount: 10
+            },
+        ]
+        
+        let itemsContainer = document.getElementById("items")
+        for (let i = 0; i<itemsList.length; i++) {
+            let idArr = []
+            if (localStorage.getItem("basket") !== null) {
+                idArr = localStorage.getItem("basket").split(",");
+            }
+
+            if (idArr.indexOf(itemsList[i].id.toString()) >= 0) {
+                let item = itemsList[i]
+                let finalPrice = item.price - (item.discount * item.price / 100)
+                let card = `
+                <div class='card' id='item${item.id}'>
+                    <h2>${item.name}</h2>
+                    <p>${finalPrice}</p>
+                    <button onClick={handleClick(${item.id})} disabled>On basket</button>
+                </div>
+                `
+                itemsContainer.innerHTML = itemsContainer.innerHTML + card
+            } else {
+                let item = itemsList[i]
+                let finalPrice = item.price - (item.discount * item.price / 100)
+                let card = `
+                <div class='card' id='item${item.id}'>
+                    <h2>${item.name}</h2>
+                    <p>${finalPrice}</p>
+                    <button onClick={handleClick(${item.id})}>To basket</button>
+                </div>
+                `
+                itemsContainer.innerHTML = itemsContainer.innerHTML + card
+            } 
+        }
+
+        function handleClick(id) {
+            if (localStorage.getItem("basket") !== null) {
+                let oldId = localStorage.getItem("basket")
+
+                let oldArrId = oldId.split(",")
+
+                if (oldArrId.indexOf(id.toString()) >= 0) {
+                } else {
+                    let idArr = [oldId, id]
+                    localStorage.setItem('basket', idArr)
+                }
+
+            } else if (localStorage.getItem("basket") === null) {
+                let idArr = [id]
+                localStorage.setItem('basket', idArr)
+            }
+            location.reload()
+        }
+    </script>
+</body>
+</html>

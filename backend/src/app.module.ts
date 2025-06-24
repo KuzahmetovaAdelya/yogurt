@@ -6,9 +6,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConceptsModule } from './concepts/concepts.module';
 import { CollabsModule } from './collabs/collabs.module';
 import { ImagesModule } from './images/images.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { UsersModule } from './users/users.module';
+import { BasketModule } from './basket/basket.module';
+import { CdekModule } from './cdek/cdek.module';
+import { PaymentModule } from './payment/payment.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -23,6 +31,14 @@ import { ImagesModule } from './images/images.module';
     ConceptsModule,
     CollabsModule,
     ImagesModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'images'),
+      serveRoot: '/images'
+    }),
+    UsersModule,
+    BasketModule,
+    CdekModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

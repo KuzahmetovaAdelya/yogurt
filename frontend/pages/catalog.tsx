@@ -5,7 +5,7 @@ import ContactsSection from '../components/ContacsSection';
 import { useRef } from "react";
 import Head from "next/head";
 
-export default function CatalogPage({}) {
+export default function CatalogPage() {
     const refScrollUp: any = useRef(0)
     
     function handleScrollUp() {

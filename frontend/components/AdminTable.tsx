@@ -4,10 +4,28 @@ import { trackPromise } from "react-promise-tracker";
 import axios from "axios";
 import host from "../host";
 
-export default function AdminTable({pageName, informationList, titlesList}) {
+interface AdminTableProps {
+    pageName: string;
+    informationList: any[];
+    titlesList: string[];
+    onDelete: () => void;
+}
 
+export default function AdminTable({pageName, informationList, titlesList, onDelete}: AdminTableProps) {
+    const ITEMS_PER_PAGE = 10;
     let [isModalOpen, setIsModalOpen] = useState(false)
     let [itemId, setItemId] = useState(1);
+    let [currentPage, setCurrentPage] = useState(1);
+
+    // Calculate total pages
+    const totalPages = Math.ceil(informationList.length / ITEMS_PER_PAGE);
+    
+    // Get current page items
+    const getCurrentPageItems = () => {
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return informationList.slice(startIndex, endIndex);
+    };
 
     function openModal(id: number) {
         setItemId(id);
@@ -18,22 +36,74 @@ export default function AdminTable({pageName, informationList, titlesList}) {
         setIsModalOpen(false)
     }
 
+    function handlePageChange(pageNumber: number) {
+        setCurrentPage(pageNumber);
+    }
+
+    function handlePrevPage() {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    function handleNextPage() {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
+    // Generate page numbers array
+    const getPageNumbers = () => {
+        const pages = [];
+        const maxVisiblePages = 5;
+        
+        if (totalPages <= maxVisiblePages) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            if (currentPage <= 3) {
+                for (let i = 1; i <= 5; i++) {
+                    pages.push(i);
+                }
+            } else if (currentPage >= totalPages - 2) {
+                for (let i = totalPages - 4; i <= totalPages; i++) {
+                    pages.push(i);
+                }
+            } else {
+                for (let i = currentPage - 2; i <= currentPage + 2; i++) {
+                    pages.push(i);
+                }
+            }
+        }
+        return pages;
+    };
+
     function deleteElement(id: number) {
         if (pageName === 'catalog') {
-            fetch(`http://localhost:3001/items/${id}/delete`, {method: "delete"})
+            fetch(`${host}items/${id}/delete`, {method: "delete"})
             .then((response) => {
                 return response.json()
-            }).then((data) => console.log(data));
+            }).then((data) => {
+                console.log(data);
+                onDelete();
+            });
         } else if (pageName === 'concepts') {
-            fetch(`http://localhost:3001/concepts/${id}/delete`, {method: "delete"})
+            fetch(`${host}concepts/${id}/delete`, {method: "delete"})
             .then((response) => {
                 return response.json()
-            }).then((data) => console.log(data));
+            }).then((data) => {
+                console.log(data);
+                onDelete();
+            });
         } else {
-            fetch(`http://localhost:3001/collabs/${id}/delete`, {method: "delete"})
+            fetch(`${host}collabs/${id}/delete`, {method: "delete"})
             .then((response) => {
                 return response.json()
-            }).then((data) => console.log(data));
+            }).then((data) => {
+                console.log(data);
+                onDelete();
+            });
         }
     }
 
@@ -44,60 +114,6 @@ export default function AdminTable({pageName, informationList, titlesList}) {
             console.log(error)
         })
     }
-
-    // {
-    //     // trackPromise(axios.get(`${host}items/streamable`, item.image[0])).then(({ data }) => {
-    //     //     document.getElementById(item.id.toString()).innerHTML = '<img alt="item image" className="w-60px h-60px" src={`data:image/png;base64,${data}`}></img>'
-    //     // // console.log(data);
-    //     // }).catch((error) => {
-    //     //     console.log(error)
-    //     // })
-    //     fetch(`${host}items/streamable`)
-    //     .then((response) => {
-    //         document.getElementById(item.id.toString()).innerHTML = '<img alt="item image" className="w-60px h-60px" src={`data:image/png;base64,${response}`}></img>'
-    //         return response.json();
-    //     })
-    // }
-    let tableInfo = []
-    console.log(pageName)
-
-    if (pageName === 'catalog') {
-
-        for (let i: number = 0; i<informationList.length; i++) {
-            let item = informationList[i]
-            console.log(item.image[0])
-            let imageB64: string;
-            trackPromise(axios.get(`${host}items/streamable`, item.image[0])).then(({ data }) => {
-                // document.getElementById(item.id.toString()).innerHTML = '<img alt="item image" className="w-60px h-60px" src={`data:image/png;base64,${data}`}></img>'
-                imageB64 = data;
-            }).catch((error) => {
-                console.log(error)
-            })
-            let image = <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td>
-            if (item.image.length !== 0) {
-                image = <td className='p-2.5 w-20' id={item.id.toString()}><img alt="item image" className="w-60px h-60px" src={`data:image/png;base64,${imageB64}`}></img></td>
-            } 
-            let tableRow =
-            <tr className='border-b border-b-gray' key={item.id}>
-                {image}
-                <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
-                <td className='text-center font-medium text-lg text-white leading-4.5'>{item.price}</td>
-                <td className='text-center font-medium text-lg text-white leading-4.5'>{item.discount}%</td>
-                <td className='text-center font-medium text-lg text-white leading-4.5 w-96 line-clamp-4 hover:line-clamp-none cursor-pointer'>{item.description}</td>
-                <td className='text-center font-medium text-lg text-white leading-4.5'>{item.type}</td>
-                <td className='text-center font-medium text-lg text-white leading-4.5 w-270'>{item.material}</td>
-                <td className='space-x-2.5 w-24'>
-                    <button title="edit" type="button" className='transition p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' alt="edit" className='w-19 h-19 group-hover:contrast-200'></img></button>
-                    <button title="delete" type="button" className='transition p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group' onClick={() => {deleteElement(item.id)}}><img src='/delete1.svg' alt="delete" className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
-                </td>
-            </tr>
-            
-            // console.log(tableRow)
-            tableInfo.push(tableRow)
-        }
-        // console.log(tableInfo)
-    }
-
 
     return (
         <>  
@@ -115,24 +131,12 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     </tr>
                 </thead>
                 <tbody id="table">
-                    {/* {pageName === 'catalog' &&
-                    informationList.map((item: {id: number, image: string[], name: string, price: number, discount: number, description: string, type: string, material: string}) => 
-                    <tr className='border-b border-b-gray' key={item.id}>
+                    {pageName === 'catalog' &&
+                    getCurrentPageItems().map((item: {id: number, image: string[], name: string, price: number, discount: number, description: string, type: string, material: string}) => 
+                    <tr className='border-b border-b-gray' key={item.id} id={item.id.toString()}>
                         {item.image.length !== 0 ?
-                            <td className='p-2.5 w-20' id={item.id.toString()}>
-                                {
-                                    // trackPromise(axios.get(`${host}items/streamable`, item.image[0])).then(({ data }) => {
-                                    //     document.getElementById(item.id.toString()).innerHTML = '<img alt="item image" className="w-60px h-60px" src={`data:image/png;base64,${data}`}></img>'
-                                    // // console.log(data);
-                                    // }).catch((error) => {
-                                    //     console.log(error)
-                                    // })
-                                    fetch(`${host}items/streamable`)
-                                    .then((response) => {
-                                        document.getElementById(item.id.toString()).innerHTML = '<img alt="item image" className="w-60px h-60px" src={`data:image/png;base64,${response}`}></img>'
-                                        return response.json();
-                                    })
-                                }
+                            <td className='p-2.5 w-20'>
+                                <img alt="item image" className="w-60px h-60px rounded-full" src={`http://localhost:3001/images/${item.image[0]}`}></img>
                             </td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
@@ -147,15 +151,13 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                             <button title="edit" type="button" className='transition p-2 bg-blue border border-blue rounded-xl hover:bg-black hover:border-light-gray group' onClick={() => {openModal(item.id)}}><img src='/edit.svg' alt="edit" className='w-19 h-19 group-hover:contrast-200'></img></button>
                             <button title="delete" type="button" className='transition p-2 bg-light-gray border border-light-gray rounded-xl hover:bg-black group' onClick={() => {deleteElement(item.id)}}><img src='/delete1.svg' alt="delete" className='w-19 h-19 group-hover:contrast-200 group-hover:invert'></img></button>
                         </td>
-                    </tr>)} */}
-
-                    {tableInfo}
+                    </tr>)}
 
                     {pageName === 'concepts' &&
-                    informationList.map((item: {id: number, image: string[], name: string, price: number}) => 
+                    getCurrentPageItems().map((item: {id: number, image: string[], name: string, price: number}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
                         {item.image.length !== 0 ?
-                            <td className='p-2.5 w-20'><img alt="concept" className='w-60px h-60px' src={item.image[0]}></img></td> :
+                            <td className='p-2.5 w-20'><img alt="concept" className='w-60px h-60px rounded-full' src={`http://localhost:3001/images/${item.image[0]}`}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
@@ -167,10 +169,10 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                     </tr>)}
 
                     {pageName === 'collabs' &&
-                    informationList.map((item: {id: number, image: string[], name: string, description: string, instagram: string, telegram: number, vkontakte: string, youtube: string}) => 
+                    getCurrentPageItems().map((item: {id: number, image: string[], name: string, description: string, instagram: string, telegram: number, vkontakte: string, youtube: string}) => 
                     <tr className='border-b border-b-gray' key={item.id}>
                         {item.image.length !== 0 ?
-                            <td className='p-2.5 w-20'><img alt="collab" className='w-60px h-60px rounded-full' src={item.image[0]}></img></td> :
+                            <td className='p-2.5 w-20'><img alt="collab" className='w-60px h-60px rounded-full' src={`http://localhost:3001/images/${item.image[0]}`}></img></td> :
                             <td className='p-2.5 w-20'><div className='w-60px h-60px bg-light-gray rounded-full'></div></td> 
                         }
                         <td className='text-center font-medium text-lg text-white leading-4.5'>{item.name}</td>
@@ -205,13 +207,37 @@ export default function AdminTable({pageName, informationList, titlesList}) {
                         }
                         <td colSpan={2} className="">
                             <div className='flex items-center gap-1 mb-10 mt-14 float-right mr-5'>
-                                <button type="button" title="back" className='transition py-1.5 w-19 hover:bg-gray rounded-md group'><img src='/admin-arrow.svg' alt="back" className='rotate-180 w-19 h-19 group-hover:invert'></img></button>
-                                <button type="button" title="page number" className='transition py-1.5 px-5 leading-none rounded-md text-gray text-p hover:bg-gray hover:text-white'>1</button>
-                                <button type="button" title="page number" className='transition py-1.5 px-5 leading-none rounded-md text-gray text-p hover:bg-gray hover:text-white'>2</button>
-                                <button type="button" title="page number" className='transition py-1.5 px-5 leading-none rounded-md text-white text-p bg-admin-gray'>3</button>
-                                <button type="button" title="page number" className='transition py-1.5 px-5 leading-none rounded-md text-gray text-p hover:bg-gray hover:text-white'>4</button>
-                                <button type="button" title="page number" className='transition py-1.5 px-5 leading-none rounded-md text-gray text-p hover:bg-gray hover:text-white'>5</button>
-                                <button type="button" title="next" className='transition py-1.5 w-19 hover:bg-gray rounded-md group'><img alt="next" src='/admin-arrow.svg' className='w-19 h-19 group-hover:invert'></img></button>
+                                <button 
+                                    type="button" 
+                                    title="back" 
+                                    className='transition py-1.5 w-19 hover:bg-gray rounded-md group'
+                                    onClick={handlePrevPage}
+                                    disabled={currentPage === 1}
+                                >
+                                    <img src='/admin-arrow.svg' alt="back" className='rotate-180 w-19 h-19 group-hover:invert'></img>
+                                </button>
+                                {getPageNumbers().map((pageNum) => (
+                                    <button 
+                                        key={pageNum}
+                                        type="button" 
+                                        title="page number" 
+                                        className={`transition py-1.5 px-5 leading-none rounded-md text-p hover:bg-gray hover:text-white ${
+                                            currentPage === pageNum ? 'text-white bg-admin-gray' : 'text-gray'
+                                        }`}
+                                        onClick={() => handlePageChange(pageNum)}
+                                    >
+                                        {pageNum}
+                                    </button>
+                                ))}
+                                <button 
+                                    type="button" 
+                                    title="next" 
+                                    className='transition py-1.5 w-19 hover:bg-gray rounded-md group'
+                                    onClick={handleNextPage}
+                                    disabled={currentPage === totalPages}
+                                >
+                                    <img alt="next" src='/admin-arrow.svg' className='w-19 h-19 group-hover:invert'></img>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -219,7 +245,7 @@ export default function AdminTable({pageName, informationList, titlesList}) {
             </table>
 
             {isModalOpen &&
-            <Modal closeModal={closeModal} id={itemId} pageName={pageName} />
+            <Modal closeModal={closeModal} id={itemId} pageName={pageName} onSuccess={onDelete} />
             }
             
         </>

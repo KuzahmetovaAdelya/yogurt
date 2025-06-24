@@ -1,4 +1,41 @@
-export default function ConceptsSection() {
+import { useRef, useState } from "react";
+
+export default function ConceptsSection({ concepts = [] }) {
+    const scrollContainerRef = useRef(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const scrollLeft = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+            if (scrollContainerRef.current) {
+                const container = scrollContainerRef.current;
+                const itemWidth = container.querySelector('.concept-item').offsetWidth;
+                container.scrollTo({
+                    left: (currentIndex - 1) * itemWidth,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    };
+
+    const scrollRight = () => {
+        if (currentIndex < concepts.length - 1) {
+            setCurrentIndex(prev => prev + 1);
+            if (scrollContainerRef.current) {
+                const container = scrollContainerRef.current;
+                const itemWidth = container.querySelector('.concept-item').offsetWidth;
+                container.scrollTo({
+                    left: (currentIndex + 1) * itemWidth,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    };
+
+    if (!concepts || concepts.length === 0) {
+        return null; // or return a loading state/placeholder if preferred
+    }
+
     return (
         <>
             <div className="w-350 mx-auto mt-20 lg:w-tablet lg:mt-24 xl:w-notepad 2xl:w-desktop">
@@ -15,44 +52,47 @@ export default function ConceptsSection() {
                     <div className="hidden lg:block lg:absolute">
                         <img className="lg:h-575 xl:w-737 2xl:h-737" src="/figure-fon.png"></img>
                     </div>
-                    <div className="flex gap-x-8 overflow-auto lg:z-10 lg:ml-56 lg:pb-10 xl:ml-325">
-
-                        <div className="w-400 lg:w-450 xl:w-325 2xl:w-440">
-                            <div className="bg-fon-one-concept bg-100% w-400 h-500 flex items-center justify-center mb-4 lg:h-575 lg:w-450 xl:w-325 2xl:w-440 2xl:h-737">
-                                <img src="/headphones5.png" className="w-325 h-400 lg:h-450 xl:w-325 2xl:w-400 2xl:h-575"></img>
+                    <div 
+                        ref={scrollContainerRef}
+                        className="flex gap-x-8 overflow-auto lg:z-10 lg:ml-56 lg:pb-10 xl:ml-325 scrollbar-hide"
+                    >
+                        {concepts.map((concept) => (
+                            <div key={concept.id} className="concept-item w-400 lg:w-450 xl:w-325 2xl:w-440 flex-shrink-0">
+                                <div className="bg-fon-one-concept bg-100% w-400 h-500 flex items-center justify-center mb-4 lg:h-575 lg:w-450 xl:w-325 2xl:w-440 2xl:h-737">
+                                    {concept.image ? (
+                                        <img 
+                                            src={`http://localhost:3001/images/${concept.image}`} 
+                                            className="w-325 h-400 lg:h-450 xl:w-325 2xl:w-400 2xl:h-575 object-contain"
+                                            alt={concept.name}
+                                        />
+                                    ) : (
+                                        <div className="w-325 h-400 lg:h-450 xl:w-325 2xl:w-400 2xl:h-575 bg-gray"></div>
+                                    )}
+                                </div>
+                                <div className="flex justify-between items-center lg:items-start">
+                                    <h3 className="text-white text-lg font-medium tracking-tighter uppercase w-2/3 leading-5 lg:text-2xl lg:leading-tight">{concept.name}</h3>
+                                    <p className="font-bold text-white text-number tracking-tighter lg:text-big-para">
+                                        {concept.discount ? Math.ceil(concept.price - concept.price / 100 * concept.discount) : concept.price}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="flex justify-between items-center lg:items-start">
-                                <h3 className="text-white text-lg font-medium tracking-tighter uppercase w-2/3 leading-5 lg:text-2xl lg:leading-tight">The case is \ gold standard</h3>
-                                <p className="font-bold text-white text-number tracking-tighter lg:text-big-para">4500</p>
-                            </div>
-                        </div>
-
-                        <div className="w-400 lg:w-450 xl:w-350 2xl:w-440">
-                            <div className="bg-fon-one-concept bg-100% w-350 h-500 flex items-center justify-center mb-4 lg:h-575 lg:w-450 xl:w-350 2xl:w-440 2xl:h-737">
-                                <img src="/cap3.png" className="w-400 h-400 lg:h-450 lg:w-450 xl:w-350 2xl:w-400 2xl:h-500"></img>
-                            </div>
-                            <div className="flex justify-between items-center lg:items-start">
-                                <h3 className="text-white text-lg font-medium tracking-tighter uppercase w-2/3 leading-5 lg:text-2xl lg:leading-tight">Cap Wings</h3>
-                                <p className="font-bold text-white text-number tracking-tighter lg:text-big-para">4300</p>
-                            </div>
-                        </div>
-
-                        <div className="w-400 lg:w-450 xl:w-325 2xl:w-450 2xl:w-440">
-                            <div className="bg-fon-one-concept bg-100% w-350 h-500 flex items-center justify-center mb-4 lg:h-575 lg:w-450 xl:w-325 2xl:w-440 2xl:h-737">
-                                <img src="/headphones6.png" className="w-64 h-400 lg:h-450 lg:w-72 xl:w-300 2xl:w-350 2xl:h-550"></img>
-                            </div>
-                            <div className="flex justify-between items-center lg:items-start">
-                                <h3 className="text-white text-lg font-medium tracking-tighter uppercase w-2/3 leading-5 lg:text-2xl lg:leading-tight">Body kit fast street</h3>
-                                <p className="font-bold text-white text-number tracking-tighter lg:text-big-para">4500</p>
-                            </div>
-                        </div>
-
+                        ))}
                     </div>
                 </div>
 
                 <div className="hidden lg:flex lg:gap-4 lg:-mt-24 xl:-mt-48 *:cursor-pointer">
-                    <div className='border-white border-2 rounded-full p-2.5 hover:bg-white group'><img src='/arrow.svg' className='rotate-225 w-25 h-25 group-hover:invert group-hover:opacity-40'></img></div>
-                    <div className='border-white border-2 rounded-full p-2.5 hover:bg-white group'><img src='/arrow.svg' className='rotate-45 w-25 h-25 group-hover:invert group-hover:opacity-40'></img></div>
+                    <div 
+                        onClick={scrollLeft}
+                        className={`border-white border-2 rounded-full p-2.5 hover:bg-white group ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    >
+                        <img src='/arrow.svg' className='rotate-225 w-25 h-25 group-hover:invert group-hover:opacity-40'></img>
+                    </div>
+                    <div 
+                        onClick={scrollRight}
+                        className={`border-white border-2 rounded-full p-2.5 hover:bg-white group ${currentIndex === concepts.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    >
+                        <img src='/arrow.svg' className='rotate-45 w-25 h-25 group-hover:invert group-hover:opacity-40'></img>
+                    </div>
                 </div>
             </div>
         </>

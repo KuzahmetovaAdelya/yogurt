@@ -1,4 +1,4 @@
-import ContactSection from './ContacsSection.js'
+import ContactSection from './ContacsSection'
 
 export default function CooperMainSection({scrollUp}) {
 
